@@ -19,7 +19,7 @@ export default function Projects() {
                         Handpicked work that showcases my abilities
                     </p>
                     <a
-                        href="https://github.com/dhxrshanr-ai?tab=repositories"
+                        href="https://github.com/dhxrshan-r"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-outline projects-github-btn"
@@ -59,16 +59,18 @@ export default function Projects() {
 
                                     {/* Actions (Slide up on hover) */}
                                     <div className="projects-actions">
-                                        <a 
-                                            href={project.liveUrl} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer" 
-                                            className="btn btn-primary" 
-                                            style={{ fontSize: '0.75rem', padding: '10px 20px', display: 'flex', alignItems: 'center', gap: '8px' }}
-                                        >
-                                            <span className="live-dot"></span>
-                                            Live Visit
-                                        </a>
+                                        {project.liveUrl && (
+                                            <a 
+                                                href={project.liveUrl} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="btn btn-primary" 
+                                                style={{ fontSize: '0.75rem', padding: '10px 20px', display: 'flex', alignItems: 'center', gap: '8px' }}
+                                            >
+                                                <span className="live-dot"></span>
+                                                Live Visit
+                                            </a>
+                                        )}
                                         <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: '0.75rem', padding: '10px 20px', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)' }}>
                                             Source Code
                                         </a>

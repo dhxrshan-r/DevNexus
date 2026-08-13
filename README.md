@@ -52,8 +52,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/dhxrshanr-ai/Portfolio.git
-cd Portfolio
+git clone https://github.com/dhxrshan-r/DevNexus.git
+cd DevNexus
 
 # Install dependencies
 npm install
@@ -110,9 +110,9 @@ Portfolio/
 
 **Dharshan** — Frontend Developer from Theni, Tamil Nadu
 
-- 📧 Email: [dhxrshanr@gmail.com](mailto:dhxrshanr@gmail.com)
+- 📧 Email: [dharshangalaxy@gmail.com](mailto:dharshangalaxy@gmail.com)
 - 💼 LinkedIn: [dharshanr6](https://www.linkedin.com/in/dharshanr6/)
-- 🐙 GitHub: [dhxrshanr-ai](https://github.com/dhxrshanr-ai)
+- 🐙 GitHub: [dhxrshan-r](https://github.com/dhxrshan-r)
 
 ---
 

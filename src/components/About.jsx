@@ -2,10 +2,10 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useEffect, useState, useRef } from 'react';
 
 const stats = [
-    { value: 'Fresher', label: 'Graduate' },
-    { value: '5+', label: 'Projects Built' },
-    { value: '3+', label: 'Certifications' },
-    { value: '8+', label: 'Technologies' },
+    { value: '7.93', label: 'CGPA' },
+    { value: '4', label: 'Projects Built' },
+    { value: '3', label: 'Certifications' },
+    { value: '2', label: 'Internships' },
 ];
 
 function CountUp({ target, duration = 2000, suffix = '' }) {
@@ -20,14 +20,14 @@ function CountUp({ target, duration = 2000, suffix = '' }) {
             ([entry]) => {
                 if (entry.isIntersecting && !hasAnimated.current) {
                     hasAnimated.current = true;
-                    const num = parseInt(target);
+                    const num = parseFloat(target);
                     if (isNaN(num)) { setCount(target); return; }
                     let start = 0;
-                    const step = Math.max(1, Math.floor(num / (duration / 16)));
+                    const step = Math.max(0.1, num / (duration / 16));
                     const timer = setInterval(() => {
                         start += step;
-                        if (start >= num) { setCount(num); clearInterval(timer); }
-                        else setCount(start);
+                        if (start >= num) { setCount(target); clearInterval(timer); }
+                        else setCount(start.toFixed(2));
                     }, 24);
                 }
             },
@@ -61,8 +61,8 @@ export default function About() {
                 {/* Text */}
                 <div ref={textRef} className="reveal about-desc-container">
                     <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9375rem, 2.5vw, 1.0625rem)', lineHeight: 1.8 }}>
-                        I'm <strong style={{ color: 'var(--text-primary)' }}>Dharshan</strong>, a design-minded Full Stack Developer. 
-                        As a recent graduate, I specialize in architecting fast, scalable web applications by merging modern UI ecosystems like React with emerging AI frameworks to deliver highly polished digital experiences.
+                        I'm <strong style={{ color: 'var(--text-primary)' }}>Dharshan</strong>, an Electronics and Communication Engineering student from <strong style={{ color: 'var(--text-primary)' }}>RVS College of Engineering, Dindigul</strong> (CGPA: 7.93). 
+                        I specialize in <strong style={{ color: 'var(--text-primary)' }}>Python, SQL, Power BI, Data Visualization, Machine Learning, Deep Learning, NLP, LLMs, RAG, and Fine-Tuning</strong>. With a strong foundation in data analysis and Generative AI, I focus on applying analytical and AI techniques to develop intelligent, data-driven solutions.
                     </p>
                 </div>
 

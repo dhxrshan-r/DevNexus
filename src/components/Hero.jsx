@@ -46,7 +46,7 @@ export default function Hero() {
                         transform: loaded ? 'translateY(0)' : 'translateY(24px)',
                     }}
                 >
-                    Web Developer
+                    AI Developer & Data Analyst
                 </p>
 
                 {/* Name */}
@@ -91,15 +91,15 @@ export default function Hero() {
                             fontSize: 'clamp(0.9375rem, 2.5vw, 1.125rem)',
                             color: 'var(--text-secondary)',
                             lineHeight: 1.6,
-                            maxWidth: 540,
+                            maxWidth: 580,
                             margin: 0,
                             marginBottom: 8,
                         }}
                     >
-                        Passionate about building fast, modern web experiences.
+                        ECE Graduate passionate about Generative AI, LLMs, RAG Applications, Data Visualization, and Power BI.
                     </p>
                     <div style={{ display: 'flex', gap: 24, padding: '4px 0' }}>
-                        <a href="https://github.com/dhxrshanr-ai" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style={{ color: 'var(--text-secondary)', fontSize: '1.75rem', transition: 'color 0.3s, transform 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                        <a href="https://github.com/dhxrshan-r" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style={{ color: 'var(--text-secondary)', fontSize: '1.75rem', transition: 'color 0.3s, transform 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                             <FiGithub />
                         </a>
                         <a href="https://www.linkedin.com/in/dharshanr6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ color: 'var(--text-secondary)', fontSize: '1.75rem', transition: 'color 0.3s, transform 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.color = '#0077b5'; e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.transform = 'translateY(0)'; }}>

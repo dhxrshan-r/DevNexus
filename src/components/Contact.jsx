@@ -4,9 +4,9 @@ import { FiPhone, FiMail, FiLinkedin, FiGithub, FiMapPin } from 'react-icons/fi'
 
 const contactInfo = [
     { icon: <FiMapPin />, label: 'Location', value: 'Theni, Tamil Nadu', href: 'Theni, Tamil Nadu' },
-    { icon: <FiMail />, label: 'Email', value: 'dhxrshanr@gmail.com', href: 'mailto:dhxrshanr@gmail.com' },
+    { icon: <FiMail />, label: 'Email', value: 'dharshangalaxy@gmail.com', href: 'mailto:dharshangalaxy@gmail.com' },
     { icon: <FiLinkedin />, label: 'LinkedIn', value: 'https://www.linkedin.com/in/dharshanr6/', href: 'https://www.linkedin.com/in/dharshanr6/' },
-    { icon: <FiGithub />, label: 'GitHub', value: 'https://github.com/dhxrshanr-ai', href: 'https://github.com/dhxrshanr-ai' },
+    { icon: <FiGithub />, label: 'GitHub', value: 'https://github.com/dhxrshan-r', href: 'https://github.com/dhxrshan-r' },
 ];
 
 export default function Contact() {
