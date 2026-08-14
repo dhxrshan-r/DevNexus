@@ -10,14 +10,14 @@
   --bg-glass: rgba(10, 10, 10, 0.7);
   --text-primary: #FFFFFF;
   --text-secondary: #A1A1AA;
-  --accent: #34D399;
-  /* Bright Emerald */
-  --accent-secondary: #059669;
-  /* Deep Emerald */
+  --text-muted: #71717A;
+  --accent: #34D399;          /* Bright Emerald */
+  --accent-secondary: #059669;/* Deep Emerald */
   --accent-hover: #10B981;
   --accent-glow: rgba(52, 211, 153, 0.4);
   --accent-faded: rgba(52, 211, 153, 0.1);
   --border: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(52, 211, 153, 0.3);
   --success: #34D399;
 }
 

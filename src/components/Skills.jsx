@@ -115,7 +115,7 @@ export default function Skills() {
                 <div ref={coreSkillsRef} className="reveal core-skills-redesign">
                     <div className="core-header-wrap">
                         <div className="line"></div>
-                        <h2 className="title">Core Skills</h2>
+                        <h2 className="title">Primary Focus Areas</h2>
                         <div className="line"></div>
                     </div>
                     

@@ -3,9 +3,12 @@ import { useState, useEffect, useCallback } from 'react';
 const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Experience', href: '#resume' },
+    { label: 'Achievements', href: '#achievements' },
     { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
 ];
+
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);

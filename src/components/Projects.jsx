@@ -1,84 +1,156 @@
+import { useState, useEffect } from 'react';
 import { projects } from '../data/projects';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { FiGithub, FiExternalLink, FiCheckCircle } from 'react-icons/fi';
+
+const categories = [
+    { id: 'all', label: 'All Projects' },
+    { id: 'ai', label: 'AI, RAG & ADAS' },
+    { id: 'data', label: 'SQL & Power BI' },
+    { id: 'nlp', label: 'Python & NLP' },
+];
 
 export default function Projects() {
     const headerRef = useScrollReveal();
     const gridRef = useScrollReveal({ staggerDelay: 150 });
+    const [activeCategory, setActiveCategory] = useState('all');
+
+    const filteredProjects = activeCategory === 'all'
+        ? projects
+        : projects.filter((p) => p.category === activeCategory);
+
+    // Ensure filtered cards are revealed when switching tabs
+    useEffect(() => {
+        if (gridRef.current) {
+            const children = gridRef.current.querySelectorAll('.reveal-stagger');
+            children.forEach((child) => child.classList.add('revealed'));
+        }
+    }, [activeCategory]);
 
     return (
         <section
             id="projects"
             className="projects-section"
-            style={{ background: 'transparent', paddingTop: 100, paddingBottom: 80 }}
+            style={{ background: 'transparent', paddingTop: 100, paddingBottom: 100 }}
         >
             <div className="container">
-                {/* Header */}
+                {/* Section Header */}
                 <div ref={headerRef} className="reveal projects-header">
-                    <h2 className="section-title">Projects</h2>
+                    <p className="section-label">Portfolio Showcase</p>
+                    <h2 className="section-title">Featured Engineering Projects</h2>
                     <p className="projects-subtitle">
-                        Handpicked work that showcases my abilities
+                        Projects spanning RAG medical assistants, SQL & Power BI nutrition analytics, NLTK VADER sentiment analysis, and computer vision ADAS driver monitoring.
                     </p>
-                    <a
-                        href="https://github.com/dhxrshan-r"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline projects-github-btn"
-                    >
-                        View All on GitHub →
-                    </a>
+
+                    {/* Filter Tabs */}
+                    <div className="projects-filter-tabs">
+                        {categories.map((tab) => (
+                            <button
+                                key={tab.id}
+                                className={`filter-tab-btn ${activeCategory === tab.id ? 'active' : ''}`}
+                                onClick={() => setActiveCategory(tab.id)}
+                            >
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Grid */}
-                <div ref={gridRef} className="reveal">
+                {/* Projects Grid */}
+                <div ref={gridRef} className="reveal revealed">
                     <div className="projects-grid">
-                        {projects.map((project) => (
-                            <div key={project.id} className="reveal-stagger group projects-card">
-                                {/* Background Image */}
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    loading="lazy"
-                                    className="projects-bg-img"
-                                />
-                                
-                                {/* Overlay Gradient */}
-                                <div className="projects-overlay" />
-
-                                {/* Content */}
-                                <div className="projects-content">
-                                    <h3 className="projects-title">{project.title}</h3>
-                                    <p className="projects-desc">{project.description}</p>
+                        {filteredProjects.map((project) => (
+                            <div key={project.id} className="reveal-stagger revealed projects-card-redesign">
+                                {/* Top Image Container with Domain Badge */}
+                                <div className="card-media-wrap">
+                                    {project.image && (
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            loading="lazy"
+                                            className="card-media-img"
+                                        />
+                                    )}
+                                    <div className="media-overlay" />
                                     
-                                    <div className="projects-tags">
+                                    <span className="domain-badge">
+                                        {project.categoryLabel}
+                                    </span>
+
+                                    {project.id === 1 && (
+                                        <span className="featured-badge">
+                                            ★ Flagship RAG Project
+                                        </span>
+                                    )}
+                                </div>
+
+                                {/* Body Content */}
+                                <div className="card-body-wrap">
+                                    <h3 className="project-card-title">{project.title}</h3>
+                                    <p className="project-card-desc">{project.description}</p>
+
+                                    {/* Architecture Highlights */}
+                                    {project.highlights && (
+                                        <div className="project-highlights-list">
+                                            {project.highlights.map((h, i) => (
+                                                <div key={i} className="highlight-item">
+                                                    <FiCheckCircle className="highlight-icon" />
+                                                    <span>{h}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    {/* Tech Stack Pills */}
+                                    <div className="project-tags-wrap">
                                         {project.tags.map((tag) => (
-                                            <span key={tag} className="projects-tag">
+                                            <span key={tag} className="tag-pill">
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
 
-                                    {/* Actions (Slide up on hover) */}
-                                    <div className="projects-actions">
+                                    {/* Actions */}
+                                    <div className="project-actions-footer">
+                                        <a
+                                            href={project.sourceUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn btn-outline card-btn"
+                                        >
+                                            <FiGithub /> Source Code
+                                        </a>
                                         {project.liveUrl && (
-                                            <a 
-                                                href={project.liveUrl} 
-                                                target="_blank" 
-                                                rel="noopener noreferrer" 
-                                                className="btn btn-primary" 
-                                                style={{ fontSize: '0.75rem', padding: '10px 20px', display: 'flex', alignItems: 'center', gap: '8px' }}
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="btn btn-primary card-btn"
                                             >
-                                                <span className="live-dot"></span>
-                                                Live Visit
+                                                <FiExternalLink /> Live Visit
                                             </a>
                                         )}
-                                        <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: '0.75rem', padding: '10px 20px', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)' }}>
-                                            Source Code
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+                </div>
+
+                {/* Bottom GitHub Showcase Banner */}
+                <div className="projects-github-banner">
+                    <div className="banner-content">
+                        <h3>Explore All Code Repositories</h3>
+                        <p>Discover complete open-source source code, notebooks, and analytics models on GitHub.</p>
+                    </div>
+                    <a
+                        href="https://github.com/dhxrshan-r"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary banner-btn"
+                    >
+                        <FiGithub style={{ fontSize: '1.2rem' }} /> View GitHub Profile →
+                    </a>
                 </div>
             </div>
 
@@ -88,157 +160,244 @@ export default function Projects() {
                     flex-direction: column;
                     align-items: center;
                     text-align: center;
-                    gap: 16px;
-                    margin-bottom: 64px;
+                    gap: 12px;
+                    margin-bottom: 56px;
                 }
                 .projects-subtitle {
-                    font-size: clamp(0.9375rem, 2.5vw, 1.125rem);
+                    font-size: clamp(0.9375rem, 2.5vw, 1.1rem);
                     color: var(--text-secondary);
-                    max-width: 600px;
-                    line-height: 1.6;
-                    margin: 0;
+                    max-width: 640px;
+                    line-height: 1.65;
+                    margin-bottom: 24px;
                 }
-                .projects-github-btn {
-                    font-size: 0.75rem;
-                    padding: 10px 24px;
-                    margin-top: 8px;
+
+                /* Category Filter Tabs */
+                .projects-filter-tabs {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    justify-content: center;
+                    background: rgba(255, 255, 255, 0.02);
+                    border: 1px solid var(--border);
+                    padding: 8px;
+                    border-radius: 9999px;
+                    backdrop-filter: blur(12px);
                 }
+                .filter-tab-btn {
+                    background: transparent;
+                    border: none;
+                    color: var(--text-secondary);
+                    padding: 10px 22px;
+                    border-radius: 9999px;
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                .filter-tab-btn:hover {
+                    color: var(--text-primary);
+                }
+                .filter-tab-btn.active {
+                    background: var(--accent);
+                    color: #000000;
+                    font-weight: 700;
+                    box-shadow: 0 0 16px var(--accent-faded);
+                }
+
+                /* Grid Layout */
                 .projects-grid {
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     gap: 32px;
-                    max-width: 1100px;
+                    max-width: 1150px;
                     margin: 0 auto;
                 }
-                .projects-card {
-                    position: relative;
-                    border-radius: 24px;
-                    background: var(--bg-card);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+
+                /* Card Design */
+                .projects-card-redesign {
+                    background: rgba(255, 255, 255, 0.02);
+                    border: 1px solid var(--border);
+                    border-radius: 28px;
                     overflow: hidden;
-                    aspect-ratio: 4/3;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-end;
-                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                    cursor: pointer;
-                    will-change: transform, opacity;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    position: relative;
                 }
-                .projects-bg-img {
-                    position: absolute;
-                    top: 0; left: 0; width: 100%; height: 100%;
+                .projects-card-redesign:hover {
+                    transform: translateY(-8px);
+                    border-color: var(--accent);
+                    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-faded);
+                }
+
+                /* Media Wrap */
+                .card-media-wrap {
+                    position: relative;
+                    width: 100%;
+                    height: 230px;
+                    overflow: hidden;
+                }
+                .card-media-img {
+                    width: 100%;
+                    height: 100%;
                     object-fit: cover;
                     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-                    z-index: 0;
-                    will-change: transform;
                 }
-                .projects-overlay {
+                .projects-card-redesign:hover .card-media-img {
+                    transform: scale(1.06);
+                }
+                .media-overlay {
                     position: absolute;
                     inset: 0;
-                    background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.6) 40%, transparent 100%);
-                    z-index: 1;
-                    transition: all 0.5s ease;
+                    background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.3) 60%, transparent 100%);
                 }
-                .projects-content {
-                    position: relative;
-                    z-index: 2;
-                    padding: 32px;
-                    transform: translateY(32px);
-                    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                }
-                .projects-title {
-                    font-size: 1.5rem;
+                .domain-badge {
+                    position: absolute;
+                    top: 16px;
+                    left: 16px;
+                    padding: 6px 14px;
+                    border-radius: 9999px;
+                    background: rgba(0, 0, 0, 0.7);
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(10px);
+                    color: var(--accent);
+                    font-size: 0.6875rem;
                     font-weight: 700;
-                    color: #fff;
-                    margin-bottom: 8px;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
                 }
-                .projects-desc {
-                    font-size: 0.95rem;
+                .featured-badge {
+                    position: absolute;
+                    top: 16px;
+                    right: 16px;
+                    padding: 6px 14px;
+                    border-radius: 9999px;
+                    background: linear-gradient(135deg, var(--accent), #059669);
+                    color: #000000;
+                    font-size: 0.6875rem;
+                    font-weight: 800;
+                    letter-spacing: 0.05em;
+                }
+
+                /* Body Wrap */
+                .card-body-wrap {
+                    padding: 28px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                }
+                .project-card-title {
+                    font-size: 1.35rem;
+                    font-weight: 800;
+                    color: var(--text-primary);
+                    margin-bottom: 10px;
+                    line-height: 1.3;
+                }
+                .project-card-desc {
+                    font-size: 0.875rem;
                     color: var(--text-secondary);
-                    line-height: 1.6;
-                    margin-bottom: 16px;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    transition: color 0.3s ease;
+                    line-height: 1.65;
+                    margin-bottom: 20px;
                 }
-                .projects-tags {
+
+                /* Architecture Highlights */
+                .project-highlights-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    margin-bottom: 20px;
+                    padding: 14px 16px;
+                    background: rgba(255, 255, 255, 0.015);
+                    border-radius: 14px;
+                    border: 1px solid rgba(255, 255, 255, 0.04);
+                }
+                .highlight-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 0.7875rem;
+                    font-weight: 600;
+                    color: var(--text-primary);
+                }
+                .highlight-icon {
+                    color: var(--accent);
+                    font-size: 0.95rem;
+                    flex-shrink: 0;
+                }
+
+                /* Tags Wrap */
+                .project-tags-wrap {
                     display: flex;
                     flex-wrap: wrap;
                     gap: 8px;
-                    margin-bottom: 20px;
+                    margin-bottom: 24px;
+                    margin-top: auto;
                 }
-                .projects-tag {
-                    font-size: 0.625rem;
+                .tag-pill {
+                    font-size: 0.65rem;
                     font-weight: 700;
-                    letter-spacing: 0.1em;
+                    letter-spacing: 0.08em;
                     text-transform: uppercase;
-                    padding: 4px 12px;
+                    padding: 5px 12px;
                     border-radius: 9999px;
-                    background: rgba(255,255,255,0.1);
-                    color: #fff;
-                    backdrop-filter: blur(8px);
-                    border: 1px solid rgba(255,255,255,0.1);
+                    background: rgba(255, 255, 255, 0.03);
+                    color: var(--text-secondary);
+                    border: 1px solid var(--border);
                 }
-                 .projects-actions {
-                    opacity: 0;
-                    display: flex;
-                    gap: 12px;
-                    transition: all 0.4s ease;
-                }
-                .live-dot {
-                    width: 8px;
-                    height: 8px;
-                    background: #fff;
-                    border-radius: 50%;
-                    box-shadow: 0 0 10px #fff;
-                    animation: pulse 1.5s infinite;
-                }
-                @keyframes pulse {
-                    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
-                    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-                    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-                }
-                
-                /* Hover Effects */
-                .projects-card:hover {
-                    transform: translateY(-8px);
-                    border-color: var(--accent);
-                    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5), 0 0 20px var(--accent-faded);
-                }
-                .projects-card:hover .projects-bg-img {
-                    transform: scale(1.08);
-                }
-                .projects-card:hover .projects-overlay {
-                    background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.8) 60%, rgba(5,5,5,0.2) 100%);
-                }
-                .projects-card:hover .projects-content {
-                    transform: translateY(0);
-                }
-                .projects-card:hover .projects-desc {
-                    color: #fff;
-                }
-                .projects-card:hover .projects-actions {
-                    opacity: 1;
-                }
-                .projects-card:hover .projects-tag {
-                    background: var(--accent-faded);
-                    color: var(--accent);
-                    border-color: var(--accent-glow);
+                .projects-card-redesign:hover .tag-pill {
+                    border-color: var(--accent-faded);
+                    color: var(--text-primary);
                 }
 
-                @media (max-width: 767px) {
-                    .projects-section { padding-top: 60px !important; padding-bottom: 60px !important; }
-                    .projects-header { flex-direction: column !important; align-items: center !important; text-align: center !important; }
-                    .projects-github-btn { margin-top: 16px; }
-                    .projects-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
-                    .projects-card { aspect-ratio: auto !important; min-height: 400px; justify-content: flex-end; }
-                    
-                    /* Always show content on mobile */
-                    .projects-content { transform: translateY(0) !important; padding: 24px !important; }
-                    .projects-actions { opacity: 1 !important; }
-                    .projects-overlay { background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 60%, transparent 100%) !important; }
+                /* Actions Footer */
+                .project-actions-footer {
+                    display: flex;
+                    gap: 12px;
+                }
+                .card-btn {
+                    flex: 1;
+                    font-size: 0.75rem !important;
+                    padding: 10px 16px !important;
+                    min-height: 38px !important;
+                }
+
+                /* GitHub Showcase Banner */
+                .projects-github-banner {
+                    margin-top: 72px;
+                    padding: 40px;
+                    border-radius: 32px;
+                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(52, 211, 153, 0.05) 100%);
+                    border: 1px solid var(--border);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 24px;
+                    max-width: 1150px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .banner-content h3 {
+                    font-size: 1.4rem;
+                    font-weight: 800;
+                    color: var(--text-primary);
+                    margin-bottom: 6px;
+                }
+                .banner-content p {
+                    font-size: 0.9rem;
+                    color: var(--text-secondary);
+                    margin: 0;
+                }
+                .banner-btn {
+                    font-size: 0.8rem !important;
+                    padding: 14px 28px !important;
+                    flex-shrink: 0;
+                }
+
+                @media (max-width: 900px) {
+                    .projects-grid { grid-template-columns: 1fr; }
+                    .projects-github-banner { flex-direction: column; text-align: center; padding: 28px; }
+                    .projects-filter-tabs { border-radius: 20px; }
                 }
             `}</style>
         </section>

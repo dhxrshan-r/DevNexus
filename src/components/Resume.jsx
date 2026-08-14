@@ -5,42 +5,51 @@ const timeline = [
         year: '2022 - 2026',
         title: 'B.E Electronics and Communication Engineering',
         org: 'RVS College of Engineering, Dindigul',
-        description: 'CGPA: 7.93. Strong foundation in Electronics, Communication Systems, Data Analysis, Machine Learning, and Generative AI.',
+        subtitle: 'CGPA : 7.93',
+        description: 'Graduated in Electronics and Communication Engineering with hands-on skills in Python, SQL, Power BI, Data Visualization, ML & DL, LLMs, RAG, and Fine-Tuning. Strong foundation in data analysis and Generative AI.',
         type: 'education',
     },
     {
         year: 'Jan 2026',
-        title: 'Full Stack Development Internship',
-        org: 'CodeAlpha (Virtual Internship)',
-        description: 'Worked on full-stack web application development tasks, building modular UI components and managing web app workflows.',
+        title: 'Full stack Development Intern',
+        org: 'CodeAlpha — Virtual Internship (1 Month)',
+        description: 'Built application components across frontend, backend, and database layers, applying full-stack development concepts to develop and integrate functional web features.',
+        bullets: [
+            'Built application components across frontend, backend, and database layers.',
+            'Applied full-stack development concepts to develop and integrate functional web features.'
+        ],
         type: 'internship',
     },
     {
         year: 'Aug 2025',
-        title: 'Summer Internship',
-        org: 'Popular Systems, Coimbatore',
-        description: 'Gained hands-on practical experience in technology workflows and system integration during 1-month summer internship.',
+        title: 'Embedded System & IoT Intern',
+        org: 'Popular Systems — Summer Internship (1 Month)',
+        description: 'Hands-on industrial experience implementing and testing microcontroller- and sensor-based solutions.',
+        bullets: [
+            'Hands-on industrial experience with microcontroller- and sensor-based hardware solutions.',
+            'Gained practical experience in hardware interfacing, real-time systems, and IoT development.'
+        ],
         type: 'internship',
     },
     {
         year: 'March 2026',
         title: 'AI Fluency : Framework & Foundations',
         org: 'Certified by Anthropic',
-        description: 'Practical training in prompt engineering, Generative AI frameworks, AI-driven workflows, and responsible deployment of LLMs.',
+        description: 'Certified by Anthropic in AI frameworks, foundation models, prompt engineering, and LLM implementation.',
         type: 'certification',
     },
     {
         year: 'Mar - Apr 2025',
         title: 'Power BI Certification',
         org: 'Certified by LOGICPIES',
-        description: 'Certified in data analysis, Power Query ETL, data modeling, and building interactive business intelligence dashboards.',
+        description: 'Certified by LOGICPIES in Power BI data visualization, Power Query ETL, data modeling, and business analytics.',
         type: 'certification',
     },
     {
         year: 'Nov - Dec 2024',
-        title: 'Full Stack Development Certification',
+        title: 'Full Stack Development',
         org: 'Academy : AlphaFly',
-        description: 'Comprehensive certification covering modern full-stack web development principles and hands-on project implementations.',
+        description: 'Certified in modern full-stack web development, frontend components, and backend database integration.',
         type: 'certification',
     },
 ];
@@ -64,9 +73,9 @@ export default function Resume() {
                 {/* Header */}
                 <div ref={headerRef} className="reveal resume-header">
                     <p className="section-label">My Journey</p>
-                    <h2 className="section-title">Education & Certifications</h2>
+                    <h2 className="section-title">Education, Internships & Certifications</h2>
                     <p className="resume-subtitle">
-                        A timeline of milestones that have shaped my professional path
+                        A timeline of academic milestones, hands-on industrial experience, and professional certifications.
                     </p>
                     <a
                         href="/resume.pdf"
@@ -79,7 +88,7 @@ export default function Resume() {
                             <polyline points="7 10 12 15 17 10" />
                             <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
-                        Download Resume
+                        Download Resume PDF
                     </a>
                 </div>
 
@@ -130,6 +139,11 @@ export default function Resume() {
                                             }}>
                                                 {item.type}
                                             </span>
+                                            {item.subtitle && (
+                                                <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent)' }}>
+                                                    {item.subtitle}
+                                                </span>
+                                            )}
                                         </div>
 
                                         {/* Icon + Title */}
@@ -143,6 +157,18 @@ export default function Resume() {
 
                                         {/* Description */}
                                         <p className="timeline-desc">{item.description}</p>
+
+                                        {/* Bullet points if available */}
+                                        {item.bullets && (
+                                            <ul className="timeline-bullets" style={{ marginTop: 12, paddingLeft: 0, listStyle: 'none' }}>
+                                                {item.bullets.map((bullet, idx) => (
+                                                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: '0.825rem', color: 'var(--text-secondary)', marginBottom: 6 }}>
+                                                        <span style={{ color: config.color, fontWeight: 'bold' }}>•</span>
+                                                        <span>{bullet}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </div>
 
                                     {/* Hover glow */}

@@ -4,6 +4,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Resume from './components/Resume';
+import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -26,6 +27,7 @@ export default function App() {
         <About />
         <Skills />
         <Resume />
+        <Achievements />
         <Projects />
         <Contact />
       </main>
@@ -34,3 +36,4 @@ export default function App() {
     </>
   );
 }
+
