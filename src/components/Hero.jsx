@@ -151,7 +151,7 @@ export default function Hero() {
                             aria-label="LinkedIn" 
                             className="hero-social-icon linkedin-icon"
                         >
-                            <FaLinkedin style={{ color: '#0A66C2' }} />
+                            <FaLinkedin />
                         </a>
                     </div>
                 </div>
@@ -320,10 +320,6 @@ export default function Hero() {
                     border-color: var(--accent);
                     transform: translateY(-3px);
                     box-shadow: 0 0 15px var(--accent-faded);
-                }
-                .linkedin-icon:hover {
-                    border-color: #0077b5;
-                    box-shadow: 0 0 15px rgba(0, 119, 181, 0.3);
                 }
 
                 /* Metrics Strip */
