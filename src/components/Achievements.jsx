@@ -3,6 +3,10 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { SiResearchgate, SiOpencv } from 'react-icons/si';
 import { FaMedal, FaBasketball, FaTrophy, FaStar } from 'react-icons/fa6';
 import nccBgImage from '../assets/ncc_redfort_parade.png';
+import adasBgImage from '../assets/adas_hackathon.png';
+import paperBgImage from '../assets/paper_presentation.png';
+import districtBasketballBgImage from '../assets/district_basketball.png';
+import zonalBasketballBgImage from '../assets/zonal_basketball.png';
 
 const categories = [
     { id: 'all', label: 'All Recognitions' },
@@ -39,6 +43,7 @@ const achievements = [
         icon: <SiOpencv className="award-icon" style={{ color: '#38BDF8' }} />,
         desc: 'Awarded 3rd Prize for designing an Intelligent Driver Monitoring & Emergency Control System prototype featuring real-time eye aspect ratio tracking and automated emergency speed governor alerts.',
         featured: false,
+        bgImage: adasBgImage,
         tags: ['Computer Vision', 'OpenCV', 'ADAS', 'Embedded C', 'Real-Time IoT'],
     },
     {
@@ -53,6 +58,7 @@ const achievements = [
         icon: <SiResearchgate className="award-icon" style={{ color: '#F59E0B' }} />,
         desc: 'Presented technical research paper on advanced electronics & AI systems at the national level symposium, evaluating neural architecture efficiency and real-time processing.',
         featured: false,
+        bgImage: paperBgImage,
         tags: ['Research Paper', 'AI Systems', 'Academic Honor', 'Symposium'],
     },
     {
@@ -67,6 +73,7 @@ const achievements = [
         icon: <FaTrophy className="award-icon" style={{ color: '#EC4899' }} />,
         desc: 'Won 1st Prize and overall team championship at the District Level Basketball Championship, showcasing high-tempo playmaking and tactical athletic endurance.',
         featured: false,
+        bgImage: districtBasketballBgImage,
         tags: ['District Champion', 'Team Leadership', 'Sports Excellence'],
     },
     {
@@ -81,6 +88,7 @@ const achievements = [
         icon: <FaBasketball className="award-icon" style={{ color: '#818CF8' }} />,
         desc: 'Secured 2nd Prize representing the institution at the Zonal Basketball Championship, maintaining strategic defense under competitive pressure.',
         featured: false,
+        bgImage: zonalBasketballBgImage,
         tags: ['Zonal Runner-Up', 'Athletic Leadership', 'Competitive Sports'],
     },
 ];
@@ -137,7 +145,7 @@ export default function Achievements() {
                     <div className="bento-achievements-grid">
                         {filtered.map((item) => {
                             const isFeatured = item.featured && activeTab === 'all';
-                            const hasBgImage = isFeatured && item.bgImage;
+                            const hasBgImage = Boolean(item.bgImage);
 
                             return (
                                 <div
@@ -149,7 +157,7 @@ export default function Achievements() {
                                         '--card-accent-border': `${item.color}35`,
                                         '--card-accent-faded': `${item.color}20`,
                                         ...(hasBgImage ? {
-                                            backgroundImage: `linear-gradient(180deg, rgba(8, 22, 16, 0.72) 0%, rgba(6, 16, 12, 0.92) 100%), url(${item.bgImage})`,
+                                            backgroundImage: `linear-gradient(180deg, rgba(8, 12, 16, 0.76) 0%, rgba(6, 10, 14, 0.94) 100%), url(${item.bgImage})`,
                                             backgroundSize: 'cover',
                                             backgroundPosition: 'center',
                                         } : {})
@@ -307,12 +315,7 @@ export default function Achievements() {
                 .bento-card:hover {
                     transform: translateY(-6px);
                     border-color: var(--card-accent-border);
-                    background-color: rgba(255, 255, 255, 0.04);
                     box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), 0 0 30px var(--card-accent-faded);
-                }
-
-                .bento-card.has-bg-img:hover {
-                    backgroundImage: linear-gradient(180deg, rgba(8, 22, 16, 0.58) 0%, rgba(6, 16, 12, 0.84) 100%), url(${nccBgImage}) !important;
                 }
 
                 .bento-card:hover .bento-top-bar {
