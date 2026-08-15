@@ -9,7 +9,6 @@ const navLinks = [
     { label: 'Contact', href: '#contact' },
 ];
 
-
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -35,10 +34,34 @@ export default function Navbar() {
         return () => observer.disconnect();
     }, []);
 
-    // Lock body scroll when menu open
+    // Lock body scroll when menu open on mobile
     useEffect(() => {
-        document.body.style.overflow = menuOpen ? 'hidden' : '';
-        return () => { document.body.style.overflow = ''; };
+        const preventTouchScroll = (e) => {
+            if (menuOpen) {
+                e.preventDefault();
+            }
+        };
+
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none';
+            document.documentElement.style.touchAction = 'none';
+            document.addEventListener('touchmove', preventTouchScroll, { passive: false });
+        } else {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            document.body.style.touchAction = '';
+            document.documentElement.style.touchAction = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            document.body.style.touchAction = '';
+            document.documentElement.style.touchAction = '';
+            document.removeEventListener('touchmove', preventTouchScroll);
+        };
     }, [menuOpen]);
 
     // Close on Escape key
@@ -53,9 +76,18 @@ export default function Navbar() {
 
     const handleNavClick = (e, href) => {
         e.preventDefault();
+        // First unlock body & html scroll so smooth scrolling works
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.touchAction = '';
+        document.documentElement.style.touchAction = '';
+
         setMenuOpen(false);
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+
+        requestAnimationFrame(() => {
+            const el = document.querySelector(href);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        });
     };
 
     return (
@@ -153,18 +185,21 @@ export default function Navbar() {
                     position: 'fixed',
                     top: 0,
                     left: 0,
+                    right: 0,
+                    bottom: 0,
                     width: '100%',
-                    height: '100vh',
                     background: 'rgba(5, 5, 5, 0.98)',
                     zIndex: 9999,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: 8,
+                    gap: 4,
                     transition: 'opacity 0.3s ease',
                     opacity: menuOpen ? 1 : 0,
                     pointerEvents: menuOpen ? 'auto' : 'none',
+                    touchAction: 'none',
+                    overscrollBehavior: 'none',
                 }}
                 onClick={(e) => {
                     // Close when clicking the overlay background (not children)
@@ -199,14 +234,14 @@ export default function Navbar() {
                         href={link.href}
                         onClick={(e) => handleNavClick(e, link.href)}
                         style={{
-                            fontSize: '1.25rem',
+                            fontSize: '1.2rem',
                             fontWeight: 600,
                             letterSpacing: '0.15em',
                             textTransform: 'uppercase',
-                            color: 'var(--text-primary)',
-                            padding: 20,
+                            color: activeSection === link.href.slice(1) ? 'var(--accent)' : 'var(--text-primary)',
+                            padding: '12px 24px',
                             textDecoration: 'none',
-                            transition: `all 0.3s ease ${menuOpen ? i * 60 : 0}ms`,
+                            transition: `all 0.3s ease ${menuOpen ? i * 50 : 0}ms`,
                             opacity: menuOpen ? 1 : 0,
                             transform: menuOpen ? 'translateY(0)' : 'translateY(-10px)',
                         }}
@@ -214,11 +249,15 @@ export default function Navbar() {
                         {link.label}
                     </a>
                 ))}
-
-
             </div>
 
             <style>{`
+                .navbar-overlay {
+                    height: 100vh;
+                    height: 100dvh;
+                    touch-action: none;
+                    overscroll-behavior: none;
+                }
                 .navbar-inner {
                     max-width: 1200px;
                     margin: 0 auto;

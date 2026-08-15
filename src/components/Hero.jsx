@@ -57,10 +57,8 @@ export default function Hero() {
                 padding: 'clamp(90px, 12vh, 130px) 0 clamp(40px, 6vh, 90px)',
             }}
         >
-            {/* Ambient Aurora Glow Background Orbs */}
+            {/* Ambient Glow & Grid Background */}
             <div className="hero-aurora-bg">
-                <div className="aurora-orb orb-1" />
-                <div className="aurora-orb orb-2" />
                 <div className="hero-grid-pattern" />
             </div>
 
@@ -166,41 +164,17 @@ export default function Hero() {
                     inset: 0;
                     pointer-events: none;
                     z-index: 1;
-                    overflow: hidden;
-                }
-                .aurora-orb {
-                    position: absolute;
-                    border-radius: 50%;
-                    filter: blur(120px);
-                    opacity: 0.12;
-                    animation: orb-float 14s infinite ease-in-out alternate;
-                }
-                .orb-1 {
-                    width: 450px;
-                    height: 450px;
-                    background: var(--accent);
-                    top: -80px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-                .orb-2 {
-                    width: 350px;
-                    height: 350px;
-                    background: #38bdf8;
-                    bottom: -100px;
-                    right: 15%;
-                    animation-delay: -7s;
-                }
-                @keyframes orb-float {
-                    0% { transform: translate(-50%, 0) scale(1); }
-                    100% { transform: translate(-45%, 20px) scale(1.1); }
+                    background: 
+                        radial-gradient(ellipse 700px 450px at 50% 25%, rgba(52, 211, 153, 0.09), transparent 70%),
+                        radial-gradient(ellipse 550px 380px at 85% 65%, rgba(56, 189, 248, 0.05), transparent 70%);
                 }
                 .hero-grid-pattern {
                     position: absolute;
                     inset: 0;
-                    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
                     background-size: 32px 32px;
-                    opacity: 0.3;
+                    -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 40%, #000 30%, transparent 85%);
+                    mask-image: radial-gradient(ellipse 80% 75% at 50% 40%, #000 30%, transparent 85%);
                 }
 
                 .live-status-dot {
@@ -246,13 +220,13 @@ export default function Hero() {
                     background: linear-gradient(180deg, #ffffff 20%, #a1a1aa 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.15));
+                    background-clip: text;
                 }
                 .name-text-accent {
                     background: linear-gradient(135deg, var(--accent) 30%, #3b82f6 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    filter: drop-shadow(0 0 25px var(--accent-faded));
+                    background-clip: text;
                 }
 
                 /* CYBER TERMINAL ROLE ROTATOR */
@@ -278,22 +252,26 @@ export default function Hero() {
                     border: 1px solid rgba(255, 255, 255, 0.08);
                     box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
                     font-family: 'Fira Code', 'Courier New', monospace;
-                    font-size: clamp(0.875rem, 2vw, 1.05rem);
+                    font-size: clamp(0.75rem, 2.4vw, 1.05rem);
                     max-width: 100%;
-                    overflow-x: auto;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
                 .terminal-prompt {
                     color: rgba(255, 255, 255, 0.35);
+                    white-space: nowrap;
                 }
                 .terminal-command {
                     color: #38bdf8;
                     margin-right: 8px;
+                    white-space: nowrap;
                 }
                 .terminal-role {
                     color: var(--accent);
                     font-weight: 700;
                     transition: opacity 0.3s ease, transform 0.3s ease;
                     display: inline-block;
+                    white-space: nowrap;
                 }
                 .terminal-role.fade-in {
                     opacity: 1;
@@ -406,7 +384,11 @@ export default function Hero() {
                     .hero-actions-row { flex-direction: column !important; gap: 14px !important; }
                     .hero-btn { width: 100% !important; max-width: 280px !important; }
                     .hero-name-title { font-size: clamp(2.25rem, 9.5vw, 3.5rem) !important; }
-                    .terminal-inner { padding: 8px 12px !important; font-size: clamp(0.72rem, 3.2vw, 0.92rem) !important; }
+                    .terminal-inner { padding: 8px 14px !important; font-size: clamp(0.72rem, 3.1vw, 0.88rem) !important; white-space: nowrap !important; }
+                }
+                @media (max-width: 520px) {
+                    .terminal-prompt { display: none !important; }
+                    .terminal-inner { padding: 6px 12px !important; font-size: clamp(0.68rem, 3.4vw, 0.82rem) !important; }
                 }
             `}</style>
         </section>
