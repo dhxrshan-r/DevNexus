@@ -113,8 +113,8 @@ export default function About() {
                 {/* Text */}
                 <div ref={textRef} className="reveal about-desc-container">
                     <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9375rem, 2.5vw, 1.0625rem)', lineHeight: 1.8 }}>
-                        I'm <strong style={{ color: 'var(--text-primary)' }}>Dharshan</strong>, an Electronics and Communication Engineering graduate from <strong style={{ color: 'var(--text-primary)' }}>RVS College of Engineering, Dindigul</strong> (CGPA: 7.93). 
-                        I specialize in <strong style={{ color: 'var(--text-primary)' }}>Python, SQL, Power BI, Data Visualization, ML & DL, LLMs, RAG, and Fine-Tuning</strong>. With a strong foundation in data analysis and Generative AI, I focus on applying analytical and AI techniques to develop data-driven, intelligent solutions.
+                        I'm <strong style={{ color: 'var(--text-primary)' }}>Dharshan</strong>, an ECE graduate from <strong style={{ color: 'var(--text-primary)' }}>RVS College of Engineering, Dindigul</strong> (CGPA: 7.93), passionate about bridging Data Science and Generative AI. 
+                        I specialize in <strong style={{ color: 'var(--text-primary)' }}>Python, SQL, Power BI, Machine Learning, and LLM RAG Systems</strong>. Driven by curiosity and technical rigor, I transform complex data into actionable insights and build end-to-end intelligent AI solutions.
                     </p>
                 </div>
 
