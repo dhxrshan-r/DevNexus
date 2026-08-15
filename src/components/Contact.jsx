@@ -94,9 +94,9 @@ export default function Contact() {
                         <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
                             <div>
                                 <label htmlFor="contact-name" style={{ display: 'block', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 8 }}>
-                                    Your Name
+                                    Name
                                 </label>
-                                <input id="contact-name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Your Name"
+                                <input id="contact-name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Name"
                                     style={inputStyle(errors.name)}
                                     onFocus={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'var(--accent)'; }}
                                     onBlur={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'rgba(255,255,255,0.15)'; }}
