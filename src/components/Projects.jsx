@@ -177,11 +177,10 @@ export default function Projects() {
                     flex-wrap: wrap;
                     gap: 10px;
                     justify-content: center;
-                    background: rgba(255, 255, 255, 0.02);
+                    background: rgba(18, 24, 20, 0.6);
                     border: 1px solid var(--border);
                     padding: 8px;
                     border-radius: 9999px;
-                    backdrop-filter: blur(12px);
                 }
                 .filter-tab-btn {
                     background: transparent;
@@ -216,7 +215,7 @@ export default function Projects() {
 
                 /* Card Design */
                 .projects-card-redesign {
-                    background: rgba(255, 255, 255, 0.02);
+                    background: rgba(18, 24, 20, 0.6);
                     border: 1px solid var(--border);
                     border-radius: 28px;
                     overflow: hidden;
@@ -258,9 +257,8 @@ export default function Projects() {
                     left: 16px;
                     padding: 6px 14px;
                     border-radius: 9999px;
-                    background: rgba(0, 0, 0, 0.7);
+                    background: rgba(5, 12, 10, 0.85);
                     border: 1px solid rgba(255, 255, 255, 0.15);
-                    backdrop-filter: blur(10px);
                     color: var(--accent);
                     font-size: 0.6875rem;
                     font-weight: 700;
@@ -399,7 +397,19 @@ export default function Projects() {
                     .projects-github-banner { flex-direction: column; text-align: center; padding: 28px; }
                     .projects-filter-tabs { border-radius: 20px; }
                 }
+                @media (max-width: 640px) {
+                    .projects-section { padding-top: 60px !important; padding-bottom: 60px !important; }
+                    .projects-header { margin-bottom: 36px; }
+                    .card-body-wrap { padding: 20px 16px; }
+                    .card-media-wrap { height: 190px; }
+                    .filter-tab-btn { padding: 8px 14px; font-size: 0.75rem; }
+                    .projects-github-banner { padding: 24px 16px; border-radius: 20px; }
+                }
+                @media (max-width: 400px) {
+                    .project-actions-footer { flex-direction: column; }
+                }
             `}</style>
         </section>
     );
 }
+

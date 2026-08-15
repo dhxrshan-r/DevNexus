@@ -145,15 +145,14 @@ export default function About() {
 
             <style>{`
                 .about-desc-container {
-                    max-width: 820px;
+                    max-width: 840px;
                     margin: 0 auto 60px;
-                    text-align: justify;
-                    text-justify: inter-word;
-                    padding: 32px 40px;
-                    background: rgba(255, 255, 255, 0.015);
+                    text-align: center;
+                    padding: 36px 44px;
+                    background: rgba(18, 24, 20, 0.6);
                     border: 1px solid var(--border);
                     border-radius: 24px;
-                    backdrop-filter: blur(12px);
+                    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
                 }
 
                 .about-stats-grid {
@@ -169,9 +168,8 @@ export default function About() {
                     text-align: center;
                     padding: 32px 18px 28px;
                     border-radius: 24px;
-                    background: rgba(255, 255, 255, 0.02);
-                    border: 1px solid rgba(255, 255, 255, 0.06);
-                    backdrop-filter: blur(16px);
+                    background: rgba(18, 24, 20, 0.6);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                     overflow: hidden;
                     display: flex;
@@ -261,9 +259,9 @@ export default function About() {
                     .about-section { padding: 60px 0 !important; }
                     .about-desc-container {
                         max-width: 100%;
-                        padding: 24px 20px;
-                        margin-bottom: 40px;
-                        text-align: justify;
+                        padding: 20px 16px;
+                        margin-bottom: 36px;
+                        text-align: left;
                     }
                     .about-stats-grid {
                         grid-template-columns: repeat(2, 1fr);
@@ -271,17 +269,18 @@ export default function About() {
                     }
                     .about-stat-card:last-child {
                         grid-column: span 2;
-                        max-width: 240px;
+                        max-width: 100%;
                         margin: 0 auto;
                         width: 100%;
                     }
-                    .about-stat-card { padding: 22px 14px 18px; border-radius: 18px; }
-                    .stat-num { font-size: 1.75rem; }
-                    .stat-icon-wrap { width: 38px; height: 38px; font-size: 1.1rem; margin-bottom: 12px; }
-                    .stat-text { font-size: 0.65rem; }
+                    .about-stat-card { padding: 20px 12px 16px; border-radius: 16px; }
+                    .stat-num { font-size: 1.65rem; }
+                    .stat-icon-wrap { width: 36px; height: 36px; font-size: 1rem; margin-bottom: 10px; }
+                    .stat-text { font-size: 0.65rem; letter-spacing: 0.08em; }
                 }
             `}</style>
         </section>
     );
 }
+
 

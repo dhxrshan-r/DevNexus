@@ -526,7 +526,7 @@ export default function Resume() {
                     }
                     .timeline-left .timeline-org,
                     .timeline-left .timeline-desc {
-                        text-align: justify;
+                        text-align: left;
                     }
 
                     /* Dot on the left */
@@ -559,27 +559,29 @@ export default function Resume() {
 
                 @media (max-width: 480px) {
                     .timeline-wrapper {
-                        padding-left: 16px;
+                        padding-left: 12px;
                     }
 
                     .timeline-left,
                     .timeline-right {
-                        padding-left: 28px !important;
+                        padding-left: 24px !important;
                     }
 
                     .timeline-card-body {
-                        padding: 16px;
+                        padding: 14px 12px;
                     }
 
                     .timeline-title {
-                        font-size: 1rem;
+                        font-size: 0.95rem;
                     }
 
                     .timeline-desc {
                         font-size: 0.8rem;
+                        text-align: left;
                     }
                 }
             `}</style>
         </section>
     );
 }
+

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { FiGithub, FiLinkedin, FiArrowDownRight, FiFileText } from 'react-icons/fi';
+import { FiArrowDownRight, FiFileText } from 'react-icons/fi';
+import { SiGithub } from 'react-icons/si';
+import { FaLinkedin } from 'react-icons/fa6';
 
 const roles = [
     "Generative AI & RAG Developer",
@@ -52,7 +54,7 @@ export default function Hero() {
                 justifyContent: 'center',
                 position: 'relative',
                 overflow: 'hidden',
-                padding: '130px 0 90px',
+                padding: 'clamp(90px, 12vh, 130px) 0 clamp(40px, 6vh, 90px)',
             }}
         >
             {/* Ambient Aurora Glow Background Orbs */}
@@ -63,32 +65,6 @@ export default function Hero() {
             </div>
 
             <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
-                
-                {/* Available Status Pill */}
-                <div
-                    className={loaded ? 'hero-pill-loaded' : 'hero-hidden'}
-                    style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 10,
-                        padding: '8px 22px',
-                        borderRadius: 9999,
-                        background: 'rgba(52, 211, 153, 0.08)',
-                        border: '1px solid rgba(52, 211, 153, 0.3)',
-                        backdropFilter: 'blur(10px)',
-                        marginBottom: 32,
-                        transition: 'all 0.7s ease',
-                        opacity: loaded ? 1 : 0,
-                        transform: loaded ? 'translateY(0)' : 'translateY(20px)',
-                        boxShadow: '0 0 20px rgba(52, 211, 153, 0.15)',
-                    }}
-                >
-                    <span className="live-status-dot" />
-                    <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--accent)', letterSpacing: '0.06em' }}>
-                        Available for AI & Data Analyst Roles
-                    </span>
-                </div>
-
                 {/* CLEAN & BOLD NAME SECTION */}
                 <div className={`hero-name-stage ${loaded ? 'revealed' : ''}`}>
                     {/* Main Name Heading with Holographic Gradient */}
@@ -166,9 +142,9 @@ export default function Hero() {
                             target="_blank" 
                             rel="noopener noreferrer" 
                             aria-label="GitHub" 
-                            className="hero-social-icon"
+                            className="hero-social-icon github-icon"
                         >
-                            <FiGithub />
+                            <SiGithub />
                         </a>
                         <a 
                             href="https://www.linkedin.com/in/dharshanr6/" 
@@ -177,29 +153,9 @@ export default function Hero() {
                             aria-label="LinkedIn" 
                             className="hero-social-icon linkedin-icon"
                         >
-                            <FiLinkedin />
+                            <FaLinkedin style={{ color: '#0A66C2' }} />
                         </a>
                     </div>
-                </div>
-
-                {/* Floating Metric Banner Strip */}
-                <div
-                    className="hero-metrics-strip"
-                    style={{
-                        transition: 'all 0.7s ease 0.6s',
-                        opacity: loaded ? 1 : 0,
-                        transform: loaded ? 'translateY(0)' : 'translateY(24px)',
-                    }}
-                >
-                    {metrics.map((m, i) => (
-                        <div key={i} className="hero-metric-card">
-                            <span className="metric-val">{m.value}</span>
-                            <div className="metric-text-wrap">
-                                <span className="metric-label">{m.label}</span>
-                                <span className="metric-detail">{m.detail}</span>
-                            </div>
-                        </div>
-                    ))}
                 </div>
             </div>
 
@@ -215,36 +171,36 @@ export default function Hero() {
                 .aurora-orb {
                     position: absolute;
                     border-radius: 50%;
-                    filter: blur(100px);
-                    opacity: 0.15;
+                    filter: blur(120px);
+                    opacity: 0.12;
                     animation: orb-float 14s infinite ease-in-out alternate;
                 }
                 .orb-1 {
-                    width: 500px;
-                    height: 500px;
+                    width: 450px;
+                    height: 450px;
                     background: var(--accent);
-                    top: -100px;
+                    top: -80px;
                     left: 50%;
                     transform: translateX(-50%);
                 }
                 .orb-2 {
-                    width: 400px;
-                    height: 400px;
-                    background: #3b82f6;
-                    bottom: -150px;
-                    right: 10%;
+                    width: 350px;
+                    height: 350px;
+                    background: #38bdf8;
+                    bottom: -100px;
+                    right: 15%;
                     animation-delay: -7s;
                 }
                 @keyframes orb-float {
                     0% { transform: translate(-50%, 0) scale(1); }
-                    100% { transform: translate(-45%, 30px) scale(1.15); }
+                    100% { transform: translate(-45%, 20px) scale(1.1); }
                 }
                 .hero-grid-pattern {
                     position: absolute;
                     inset: 0;
-                    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+                    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
                     background-size: 32px 32px;
-                    opacity: 0.4;
+                    opacity: 0.3;
                 }
 
                 .live-status-dot {
@@ -268,38 +224,23 @@ export default function Hero() {
                     opacity: 0;
                     transform: translateY(30px);
                     transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+                    max-width: 100%;
                 }
                 .hero-name-stage.revealed {
                     opacity: 1;
                     transform: translateY(0);
                 }
 
-                .name-code-wrapper {
-                    font-family: 'Fira Code', 'Courier New', monospace;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    letter-spacing: 0.2em;
-                    color: rgba(255, 255, 255, 0.4);
-                    margin-bottom: 8px;
-                    text-transform: uppercase;
-                }
-                .name-code-bracket {
-                    color: var(--accent);
-                }
-                .name-code-text {
-                    color: rgba(255, 255, 255, 0.6);
-                    margin: 0 4px;
-                }
-
                 .hero-name-title {
-                    font-size: clamp(3.75rem, 11vw, 7.5rem);
+                    font-size: clamp(2.25rem, 8.5vw, 6.5rem);
                     font-family: 'Outfit', sans-serif;
                     font-weight: 900;
                     text-transform: uppercase;
-                    line-height: 0.92;
-                    letterSpacing: -0.04em;
+                    line-height: 0.95;
+                    letter-spacing: -0.03em;
                     margin: 0 0 16px 0;
                     position: relative;
+                    word-break: break-word;
                 }
                 .name-text-primary {
                     background: linear-gradient(180deg, #ffffff 20%, #a1a1aa 100%);
@@ -314,72 +255,6 @@ export default function Hero() {
                     filter: drop-shadow(0 0 25px var(--accent-faded));
                 }
 
-                .name-badge-strip {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 10px;
-                    padding: 6px 18px;
-                    border-radius: 9999px;
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
-                    backdrop-filter: blur(8px);
-                    font-size: 0.725rem;
-                    font-weight: 700;
-                    letter-spacing: 0.12em;
-                    color: var(--text-secondary);
-                }
-                .badge-dot {
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 50%;
-                    background: var(--accent);
-                }
-                .badge-label {
-                    color: var(--text-primary);
-                }
-                .badge-divider {
-                    color: rgba(255, 255, 255, 0.2);
-                }
-                .badge-sub {
-                    color: var(--accent);
-                }
-
-                /* Floating Tech Badges (Desktop) */
-                .floating-tags-container {
-                    position: absolute;
-                    inset: 0;
-                    pointer-events: none;
-                }
-                .floating-tag {
-                    position: absolute;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 8px 16px;
-                    border-radius: 9999px;
-                    background: rgba(10, 10, 10, 0.75);
-                    border: 1px solid;
-                    backdrop-filter: blur(12px);
-                    font-size: 0.75rem;
-                    font-weight: 600;
-                    color: #ffffff;
-                    pointer-events: auto;
-                    transition: transform 0.3s ease;
-                    animation: float-tag 6s ease-in-out infinite alternate;
-                }
-                .floating-tag:hover {
-                    transform: scale(1.08) translateY(-4px);
-                }
-                .tag-pos-0 { animation-delay: 0s; }
-                .tag-pos-1 { animation-delay: -1.5s; }
-                .tag-pos-2 { animation-delay: -3s; }
-                .tag-pos-3 { animation-delay: -4.5s; }
-
-                @keyframes float-tag {
-                    0% { transform: translateY(0px); }
-                    100% { transform: translateY(-10px); }
-                }
-
                 /* CYBER TERMINAL ROLE ROTATOR */
                 .hero-terminal-rotator {
                     display: flex;
@@ -388,6 +263,7 @@ export default function Hero() {
                     opacity: 0;
                     transform: translateY(20px);
                     transition: all 0.7s ease 0.3s;
+                    max-width: 100%;
                 }
                 .hero-terminal-rotator.revealed {
                     opacity: 1;
@@ -403,6 +279,8 @@ export default function Hero() {
                     box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
                     font-family: 'Fira Code', 'Courier New', monospace;
                     font-size: clamp(0.875rem, 2vw, 1.05rem);
+                    max-width: 100%;
+                    overflow-x: auto;
                 }
                 .terminal-prompt {
                     color: rgba(255, 255, 255, 0.35);
@@ -466,9 +344,8 @@ export default function Hero() {
                     box-shadow: 0 0 15px var(--accent-faded);
                 }
                 .linkedin-icon:hover {
-                    color: #0077b5;
                     border-color: #0077b5;
-                    box-shadow: 0 0 15px rgba(0, 119, 181, 0.2);
+                    box-shadow: 0 0 15px rgba(0, 119, 181, 0.3);
                 }
 
                 /* Metrics Strip */
@@ -520,19 +397,20 @@ export default function Hero() {
                 }
 
                 @media (max-width: 850px) {
-                    .hero-metrics-strip { grid-template-columns: 1fr; gap: 16px; text-align: center; }
+                    .hero-metrics-strip { grid-template-columns: 1fr; gap: 16px; text-align: center; padding: 18px 16px; }
                     .hero-metric-card { justify-content: center; }
                     .hero-social-divider { display: none; }
                 }
                 @media (max-width: 767px) {
-                    .hero-section { padding: 90px 0 40px !important; }
+                    .hero-section { padding: 80px 0 40px !important; }
                     .hero-actions-row { flex-direction: column !important; gap: 14px !important; }
                     .hero-btn { width: 100% !important; max-width: 280px !important; }
-                    .hero-name-title { font-size: 3.5rem !important; }
-                    .terminal-inner { padding: 8px 14px !important; font-size: 0.78rem !important; }
+                    .hero-name-title { font-size: clamp(2.25rem, 9.5vw, 3.5rem) !important; }
+                    .terminal-inner { padding: 8px 12px !important; font-size: clamp(0.72rem, 3.2vw, 0.92rem) !important; }
                 }
             `}</style>
         </section>
     );
 }
+
 
