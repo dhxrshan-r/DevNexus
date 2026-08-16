@@ -114,7 +114,7 @@ export default function About() {
                 <div ref={textRef} className="reveal about-desc-container">
                     <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9375rem, 2.5vw, 1.0625rem)', lineHeight: 1.8 }}>
                         I'm <strong style={{ color: 'var(--text-primary)' }}>Dharshan</strong>, an ECE graduate from <strong style={{ color: 'var(--text-primary)' }}>RVS College of Engineering, Dindigul</strong> (CGPA: 7.93), passionate about bridging Data Science and Generative AI. 
-                        I specialize in <strong style={{ color: 'var(--text-primary)' }}>Python, SQL, Power BI, Machine Learning, and LLM RAG Systems</strong>. Driven by curiosity and technical rigor, I transform complex data into actionable insights and build end-to-end intelligent AI&nbsp;solutions.
+                        I specialize in <strong style={{ color: 'var(--text-primary)' }}>Python, SQL, Power BI, Machine Learning, and LLM RAG Systems</strong>. Driven by curiosity and technical rigor, I transform complex data into actionable insights and build end-to-end AI solutions.
                     </p>
                 </div>
 
@@ -145,10 +145,10 @@ export default function About() {
 
             <style>{`
                 .about-desc-container {
-                    max-width: 860px;
+                    max-width: 880px;
                     margin: 0 auto 60px;
                     text-align: center;
-                    padding: 36px 36px;
+                    padding: 36px 40px;
                     background: rgba(18, 24, 20, 0.6);
                     border: 1px solid var(--border);
                     border-radius: 24px;
@@ -156,7 +156,7 @@ export default function About() {
                 }
 
                 .about-desc-container p {
-                    text-wrap: balance;
+                    text-wrap: pretty;
                 }
 
                 .about-stats-grid {
