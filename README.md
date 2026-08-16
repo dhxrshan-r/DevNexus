@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/icon.png" alt="DevNexus Logo" width="80" />
+  <img src="public/icon.png" alt="DevNexus Logo" width="140" style="border-radius: 16px;" />
 </p>
 
 <h1 align="center">DevNexus — Developer Portfolio</h1>

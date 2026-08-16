@@ -121,11 +121,14 @@ export default function Navbar() {
                             textDecoration: 'none',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '2px'
+                            gap: '10px'
                         }}
                     >
-                        <span style={{ color: 'var(--text-primary)' }}>DEV</span>
-                        <span className="text-gradient">NEXUS</span>
+                        <img src="/icon.png" alt="DevNexus Logo" style={{ width: '32px', height: '32px', borderRadius: '8px', objectFit: 'cover', border: '1px solid rgba(52, 211, 153, 0.3)' }} />
+                        <div>
+                            <span style={{ color: 'var(--text-primary)' }}>DEV</span>
+                            <span className="text-gradient">NEXUS</span>
+                        </div>
                     </a>
 
                     {/* Desktop Links */}
