@@ -38,7 +38,7 @@ export const projects = [
         highlights: ['NLTK VADER Sentiment Analysis', 'Region & State Metadata Mapping', 'Hashtag & Quantile Sentiment Scoring'],
         image: socialAnalyticsImg,
         tags: ['Python', 'NLTK', 'VADER', 'Sentiment Analysis', 'Pandas', 'Data Wrangling'],
-        sourceUrl: "https://github.com/dhxrshan-r?tab=repositories",
+        sourceUrl: "https://github.com/dhxrshan-r/Capstone-Social-Media-Analytics.git",
     },
     {
         id: 4,
