@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FiArrowDownRight, FiFileText } from 'react-icons/fi';
+import { FiArrowDownRight, FiDownload } from 'react-icons/fi';
 import { SiGithub } from 'react-icons/si';
 import { FaLinkedin } from 'react-icons/fa6';
 
@@ -7,7 +7,7 @@ const roles = [
     "Generative AI & RAG Developer",
     "Data Analyst & Power BI Specialist",
     "Computer Vision & ADAS Developer",
-    "ECE Graduate (CGPA 7.93)"
+    "ECE Graduate"
 ];
 
 const metrics = [
@@ -106,7 +106,7 @@ export default function Hero() {
                             margin: 0,
                         }}
                     >
-                        Electronics & Communication Engineering Graduate (CGPA 7.93). Developing intelligent <strong style={{ color: 'var(--text-primary)' }}>RAG Medical Assistants</strong>, interactive <strong style={{ color: 'var(--text-primary)' }}>SQL & Power BI Dashboards</strong>, and real-time <strong style={{ color: 'var(--text-primary)' }}>Computer Vision ADAS Systems</strong>.
+                        Electronics & Communication Engineering Graduate specializing in <strong style={{ color: 'var(--text-primary)' }}>Generative AI & RAG</strong>, <strong style={{ color: 'var(--text-primary)' }}>Data Analytics & Power BI</strong>, and <strong style={{ color: 'var(--text-primary)' }}>Computer Vision</strong>.
                     </p>
                 </div>
 
@@ -128,8 +128,8 @@ export default function Hero() {
                     <a href="#projects" onClick={(e) => handleScroll(e, '#projects')} className="btn btn-primary hero-btn glow-btn">
                         Explore Featured Work <FiArrowDownRight style={{ fontSize: '1.2rem' }} />
                     </a>
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline hero-btn">
-                        <FiFileText /> View Resume
+                    <a href="/resume.pdf" download="Dharshan_R_Resume.pdf" className="btn btn-outline hero-btn">
+                        <FiDownload /> Download Resume
                     </a>
 
                     <div className="hero-social-divider" />

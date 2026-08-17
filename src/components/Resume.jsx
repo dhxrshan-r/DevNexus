@@ -22,12 +22,12 @@ const timeline = [
     },
     {
         year: 'Aug 2025',
-        title: 'Embedded System & IoT Intern',
+        title: 'Hardware Trainee Intern',
         org: 'Popular Systems — Summer Internship (1 Month)',
-        description: 'Hands-on industrial experience implementing and testing microcontroller- and sensor-based solutions.',
+        description: 'Gained practical exposure to sensor manufacturing and hardware production processes, including sensor assembly, testing, calibration, and quality inspection of sensor-based components.',
         bullets: [
-            'Hands-on industrial experience with microcontroller- and sensor-based hardware solutions.',
-            'Gained practical experience in hardware interfacing, real-time systems, and IoT development.'
+            'Gained practical exposure to sensor manufacturing and hardware production processes.',
+            'Performed sensor assembly, testing, calibration, and quality inspection of sensor-based components.'
         ],
         type: 'internship',
     },
@@ -79,8 +79,7 @@ export default function Resume() {
                     </p>
                     <a
                         href="/resume.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        download="Dharshan_R_Resume.pdf"
                         className="btn btn-primary resume-download-btn"
                     >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
