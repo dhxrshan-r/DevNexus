@@ -12,6 +12,7 @@ export default function App() {
   return (
     <>
       <div className="bg-aurora"></div>
+      <div className="cyber-scanner-line"></div>
       {/* Skip to content link for accessibility */}
       <a
         href="#about"

@@ -60,7 +60,11 @@ export default function Projects() {
                 <div ref={gridRef} className="reveal revealed">
                     <div className="projects-grid">
                         {filteredProjects.map((project) => (
-                            <div key={project.id} className="reveal-stagger revealed projects-card-redesign">
+                            <div key={project.id} className="reveal-stagger revealed projects-card-redesign hud-box">
+                                <div className="hud-corner-tl" />
+                                <div className="hud-corner-tr" />
+                                <div className="hud-corner-bl" />
+                                <div className="hud-corner-br" />
                                 {/* Top Image Container with Domain Badge */}
                                 <div className="card-media-wrap">
                                     {project.image && (
@@ -198,10 +202,10 @@ export default function Projects() {
                     color: var(--text-primary);
                 }
                 .filter-tab-btn.active {
-                    background: var(--accent);
-                    color: #000000;
+                    background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+                    color: #ffffff;
                     font-weight: 700;
-                    box-shadow: 0 0 16px var(--accent-faded);
+                    box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
                 }
 
                 /* Grid Layout */
@@ -215,8 +219,8 @@ export default function Projects() {
 
                 /* Card Design */
                 .projects-card-redesign {
-                    background: rgba(18, 24, 20, 0.6);
-                    border: 1px solid var(--border);
+                    background: rgba(11, 13, 25, 0.6);
+                    border: 1px solid rgba(168, 85, 247, 0.2);
                     border-radius: 28px;
                     overflow: hidden;
                     display: flex;
@@ -227,7 +231,7 @@ export default function Projects() {
                 .projects-card-redesign:hover {
                     transform: translateY(-8px);
                     border-color: var(--accent);
-                    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-faded);
+                    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow);
                 }
 
                 /* Media Wrap */
@@ -249,7 +253,7 @@ export default function Projects() {
                 .media-overlay {
                     position: absolute;
                     inset: 0;
-                    background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.3) 60%, transparent 100%);
+                    background: linear-gradient(to top, rgba(11, 13, 25, 0.95) 0%, rgba(11, 13, 25, 0.3) 60%, transparent 100%);
                 }
                 .domain-badge {
                     position: absolute;
@@ -257,8 +261,8 @@ export default function Projects() {
                     left: 16px;
                     padding: 6px 14px;
                     border-radius: 9999px;
-                    background: rgba(5, 12, 10, 0.85);
-                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    background: rgba(11, 13, 25, 0.85);
+                    border: 1px solid rgba(168, 85, 247, 0.3);
                     color: var(--accent);
                     font-size: 0.6875rem;
                     font-weight: 700;
@@ -271,8 +275,8 @@ export default function Projects() {
                     right: 16px;
                     padding: 6px 14px;
                     border-radius: 9999px;
-                    background: linear-gradient(135deg, var(--accent), #059669);
-                    color: #000000;
+                    background: linear-gradient(135deg, #a855f7, #06b6d4);
+                    color: #ffffff;
                     font-size: 0.6875rem;
                     font-weight: 800;
                     letter-spacing: 0.05em;
@@ -365,8 +369,9 @@ export default function Projects() {
                     margin-top: 72px;
                     padding: 40px;
                     border-radius: 32px;
-                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(52, 211, 153, 0.05) 100%);
-                    border: 1px solid var(--border);
+                    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+                    border: 1px solid rgba(168, 85, 247, 0.35);
+                    box-shadow: 0 10px 40px -15px rgba(168, 85, 247, 0.2);
                     display: flex;
                     align-items: center;
                     justify-content: space-between;

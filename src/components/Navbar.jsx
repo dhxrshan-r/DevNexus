@@ -99,10 +99,10 @@ export default function Navbar() {
                     left: 0,
                     width: '100%',
                     zIndex: 1000,
-                    background: scrolled ? 'rgba(5, 5, 5, 0.95)' : 'transparent',
-                    backdropFilter: scrolled ? 'blur(10px)' : 'none',
-                    WebkitBackdropFilter: scrolled ? 'blur(10px)' : 'none',
-                    boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.3)' : 'none',
+                    background: scrolled ? 'rgba(5, 6, 10, 0.92)' : 'transparent',
+                    backdropFilter: scrolled ? 'blur(12px)' : 'none',
+                    WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+                    boxShadow: scrolled ? '0 4px 30px rgba(168, 85, 247, 0.15)' : 'none',
                     transition: 'all 0.5s ease',
                 }}
                 role="navigation"
@@ -124,7 +124,6 @@ export default function Navbar() {
                             gap: '10px'
                         }}
                     >
-                        <img src="/icon.png" alt="DevNexus Logo" style={{ width: '32px', height: '32px', borderRadius: '8px', objectFit: 'cover', border: '1px solid rgba(52, 211, 153, 0.3)' }} />
                         <div>
                             <span style={{ color: 'var(--text-primary)' }}>DEV</span>
                             <span className="text-gradient">NEXUS</span>

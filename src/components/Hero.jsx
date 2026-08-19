@@ -74,7 +74,9 @@ export default function Hero() {
 
                 {/* Cyber Terminal Role Rotator */}
                 <div className={`hero-terminal-rotator ${loaded ? 'revealed' : ''}`}>
-                    <div className="terminal-inner">
+                    <div className="terminal-inner hud-box">
+                        <div className="hud-corner-tl" />
+                        <div className="hud-corner-tr" />
                         <span className="terminal-prompt">user@devnexus:~$&nbsp;</span>
                         <span className="terminal-command">const role =</span>
                         <span className={`terminal-role ${fade ? 'fade-in' : 'fade-out'}`}>
@@ -159,19 +161,45 @@ export default function Hero() {
 
             <style>{`
                 /* Background Aurora Orbs & Grid */
+                .hero-cyber-status {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 8px 18px;
+                    border-radius: 9999px;
+                    background: rgba(11, 13, 25, 0.85);
+                    border: 1px solid rgba(168, 85, 247, 0.3);
+                    box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+                    margin-bottom: 24px;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                .hero-cyber-status.revealed {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .hud-status-txt {
+                    font-family: 'Fira Code', monospace;
+                    font-size: 0.725rem;
+                    font-weight: 700;
+                    letter-spacing: 0.08em;
+                    color: #06b6d4;
+                }
+
                 .hero-aurora-bg {
                     position: absolute;
                     inset: 0;
                     pointer-events: none;
                     z-index: 1;
                     background: 
-                        radial-gradient(ellipse 700px 450px at 50% 25%, rgba(52, 211, 153, 0.09), transparent 70%),
-                        radial-gradient(ellipse 550px 380px at 85% 65%, rgba(56, 189, 248, 0.05), transparent 70%);
+                        radial-gradient(ellipse 700px 450px at 50% 25%, rgba(168, 85, 247, 0.16), transparent 70%),
+                        radial-gradient(ellipse 550px 380px at 85% 65%, rgba(6, 182, 212, 0.12), transparent 70%);
                 }
                 .hero-grid-pattern {
                     position: absolute;
                     inset: 0;
-                    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+                    background-image: radial-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px);
                     background-size: 32px 32px;
                     -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 40%, #000 30%, transparent 85%);
                     mask-image: radial-gradient(ellipse 80% 75% at 50% 40%, #000 30%, transparent 85%);
@@ -217,13 +245,13 @@ export default function Hero() {
                     word-break: break-word;
                 }
                 .name-text-primary {
-                    background: linear-gradient(180deg, #ffffff 20%, #a1a1aa 100%);
+                    background: linear-gradient(180deg, #ffffff 20%, #94a3b8 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
                 }
                 .name-text-accent {
-                    background: linear-gradient(135deg, var(--accent) 30%, #3b82f6 100%);
+                    background: linear-gradient(135deg, #a855f7 20%, #06b6d4 70%, #f43f5e 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
@@ -248,9 +276,9 @@ export default function Hero() {
                     align-items: center;
                     padding: 10px 24px;
                     border-radius: 12px;
-                    background: rgba(5, 5, 5, 0.75);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
-                    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+                    background: rgba(11, 13, 25, 0.85);
+                    border: 1px solid rgba(168, 85, 247, 0.25);
+                    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(168, 85, 247, 0.3);
                     font-family: 'Fira Code', 'Courier New', monospace;
                     font-size: clamp(0.75rem, 2.4vw, 1.05rem);
                     max-width: 100%;
@@ -258,16 +286,16 @@ export default function Hero() {
                     overflow: hidden;
                 }
                 .terminal-prompt {
-                    color: rgba(255, 255, 255, 0.35);
+                    color: rgba(248, 250, 252, 0.4);
                     white-space: nowrap;
                 }
                 .terminal-command {
-                    color: #38bdf8;
+                    color: #06b6d4;
                     margin-right: 8px;
                     white-space: nowrap;
                 }
                 .terminal-role {
-                    color: var(--accent);
+                    color: #a855f7;
                     font-weight: 700;
                     transition: opacity 0.3s ease, transform 0.3s ease;
                     display: inline-block;
@@ -282,7 +310,7 @@ export default function Hero() {
                     transform: translateY(4px);
                 }
                 .terminal-cursor {
-                    color: var(--accent);
+                    color: #06b6d4;
                     margin-left: 4px;
                     font-weight: 900;
                     animation: blink 1s step-start infinite;
@@ -290,10 +318,10 @@ export default function Hero() {
                 @keyframes blink { 50% { opacity: 0; } }
 
                 .glow-btn {
-                    box-shadow: 0 0 20px var(--accent-faded);
+                    box-shadow: 0 0 24px rgba(168, 85, 247, 0.35);
                 }
                 .glow-btn:hover {
-                    box-shadow: 0 0 30px var(--accent-faded);
+                    box-shadow: 0 0 35px rgba(6, 182, 212, 0.5);
                 }
 
                 .hero-social-divider {
@@ -319,7 +347,7 @@ export default function Hero() {
                     color: var(--accent);
                     border-color: var(--accent);
                     transform: translateY(-3px);
-                    box-shadow: 0 0 15px var(--accent-faded);
+                    box-shadow: 0 0 20px var(--accent-glow);
                 }
 
                 /* Metrics Strip */
@@ -330,8 +358,8 @@ export default function Hero() {
                     max-width: 900px;
                     margin: 0 auto;
                     padding: 24px 32px;
-                    background: rgba(255, 255, 255, 0.02);
-                    border: 1px solid var(--border);
+                    background: rgba(11, 13, 25, 0.6);
+                    border: 1px solid rgba(168, 85, 247, 0.2);
                     border-radius: 24px;
                     backdrop-filter: blur(12px);
                 }
@@ -346,7 +374,7 @@ export default function Hero() {
                     font-weight: 800;
                     font-family: 'Outfit', sans-serif;
                     color: var(--text-primary);
-                    background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+                    background: linear-gradient(135deg, #ffffff 20%, #a855f7 60%, #06b6d4 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }

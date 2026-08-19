@@ -24,8 +24,8 @@ const achievements = [
         year: 'Jan 2019',
         category: 'national',
         badge: '🎖️ National Selection',
-        color: '#10B981',
-        icon: <FaMedal className="award-icon" style={{ color: '#10B981' }} />,
+        color: '#A855F7',
+        icon: <FaMedal className="award-icon" style={{ color: '#A855F7' }} />,
         desc: 'Selected to represent NCC at the prestigious Republic Day Camp (RDC), participating in the March Past at the Red Fort, New Delhi. Represented national cadet corps with high military drill discipline, endurance & athletic leadership.',
         featured: true,
         bgImage: nccBgImage,
@@ -39,8 +39,8 @@ const achievements = [
         year: '2024',
         category: 'tech',
         badge: '🥉 3rd Prize Champion',
-        color: '#38BDF8',
-        icon: <SiOpencv className="award-icon" style={{ color: '#38BDF8' }} />,
+        color: '#06B6D4',
+        icon: <SiOpencv className="award-icon" style={{ color: '#06B6D4' }} />,
         desc: 'Awarded 3rd Prize for designing an Intelligent Driver Monitoring & Emergency Control System prototype featuring real-time eye aspect ratio tracking and automated emergency speed governor alerts.',
         featured: false,
         bgImage: adasBgImage,
@@ -54,8 +54,8 @@ const achievements = [
         year: '2024',
         category: 'tech',
         badge: '🥈 2nd Prize',
-        color: '#F59E0B',
-        icon: <SiResearchgate className="award-icon" style={{ color: '#F59E0B' }} />,
+        color: '#F43F5E',
+        icon: <SiResearchgate className="award-icon" style={{ color: '#F43F5E' }} />,
         desc: 'Presented technical research paper on advanced electronics & AI systems at the national level symposium, evaluating neural architecture efficiency and real-time processing.',
         featured: false,
         bgImage: paperBgImage,
@@ -69,8 +69,8 @@ const achievements = [
         year: '2020',
         category: 'sports',
         badge: '🏆 1st Prize Champion',
-        color: '#EC4899',
-        icon: <FaTrophy className="award-icon" style={{ color: '#EC4899' }} />,
+        color: '#38BDF8',
+        icon: <FaTrophy className="award-icon" style={{ color: '#38BDF8' }} />,
         desc: 'Won 1st Prize and overall team championship at the District Level Basketball Championship, showcasing high-tempo playmaking and tactical athletic endurance.',
         featured: false,
         bgImage: districtBasketballBgImage,
@@ -84,8 +84,8 @@ const achievements = [
         year: '2021',
         category: 'sports',
         badge: '🥈 2nd Prize',
-        color: '#818CF8',
-        icon: <FaBasketball className="award-icon" style={{ color: '#818CF8' }} />,
+        color: '#C084FC',
+        icon: <FaBasketball className="award-icon" style={{ color: '#C084FC' }} />,
         desc: 'Secured 2nd Prize representing the institution at the Zonal Basketball Championship, maintaining strategic defense under competitive pressure.',
         featured: false,
         bgImage: zonalBasketballBgImage,
@@ -150,7 +150,7 @@ export default function Achievements() {
                             return (
                                 <div
                                     key={item.id}
-                                    className={`reveal-stagger revealed bento-card ${isFeatured ? 'bento-card-featured' : ''} ${hasBgImage ? 'has-bg-img' : ''}`}
+                                    className={`reveal-stagger revealed bento-card hud-box ${isFeatured ? 'bento-card-featured' : ''} ${hasBgImage ? 'has-bg-img' : ''}`}
                                     style={{
                                         '--card-accent': item.color,
                                         '--card-accent-bg': `${item.color}12`,
@@ -163,6 +163,10 @@ export default function Achievements() {
                                         } : {})
                                     }}
                                 >
+                                    <div className="hud-corner-tl" />
+                                    <div className="hud-corner-tr" />
+                                    <div className="hud-corner-bl" />
+                                    <div className="hud-corner-br" />
                                     {/* Top Holographic Accent Bar */}
                                     <div className="bento-top-bar" />
 
@@ -243,7 +247,7 @@ export default function Achievements() {
                     flex-wrap: wrap;
                     gap: 10px;
                     justify-content: center;
-                    background: rgba(18, 24, 20, 0.6);
+                    background: rgba(11, 13, 25, 0.6);
                     border: 1px solid var(--border);
                     padding: 6px;
                     border-radius: 9999px;
@@ -264,10 +268,10 @@ export default function Achievements() {
                     color: var(--text-primary);
                 }
                 .achievements-tab-btn.active {
-                    background: var(--accent);
-                    color: #000000;
+                    background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+                    color: #ffffff;
                     font-weight: 700;
-                    box-shadow: 0 0 16px var(--accent-faded);
+                    box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
                 }
 
                 /* Bento Grid Layout */
@@ -280,7 +284,7 @@ export default function Achievements() {
                 }
 
                 .bento-card {
-                    background: rgba(255, 255, 255, 0.02);
+                    background: rgba(11, 13, 25, 0.6);
                     border: 1px solid var(--border);
                     border-radius: 24px;
                     padding: 28px;
@@ -293,8 +297,8 @@ export default function Achievements() {
 
                 .bento-card-featured {
                     grid-column: span 2;
-                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(16, 185, 129, 0.08) 100%);
-                    border-color: rgba(16, 185, 129, 0.35);
+                    background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+                    border-color: rgba(168, 85, 247, 0.35);
                 }
 
                 .bento-card.has-bg-img {
@@ -352,9 +356,9 @@ export default function Achievements() {
                     gap: 5px;
                     font-size: 0.6875rem;
                     font-weight: 800;
-                    color: #10B981;
-                    background: rgba(16, 185, 129, 0.15);
-                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    color: #A855F7;
+                    background: rgba(168, 85, 247, 0.15);
+                    border: 1px solid rgba(168, 85, 247, 0.3);
                     padding: 4px 12px;
                     border-radius: 9999px;
                     letter-spacing: 0.05em;

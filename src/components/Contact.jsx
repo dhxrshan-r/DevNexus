@@ -65,7 +65,7 @@ export default function Contact() {
         fontSize: '1rem',
         outline: 'none',
         border: 'none',
-        borderBottom: `1px solid ${hasError ? '#EF4444' : 'rgba(255,255,255,0.15)'}`,
+        borderBottom: `1px solid ${hasError ? '#F43F5E' : 'rgba(168,85,247,0.25)'}`,
         fontFamily: 'inherit',
         transition: 'border-color 0.3s ease',
         minHeight: 44,
@@ -99,9 +99,9 @@ export default function Contact() {
                                 <input id="contact-name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Name"
                                     style={inputStyle(errors.name)}
                                     onFocus={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'var(--accent)'; }}
-                                    onBlur={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'rgba(255,255,255,0.15)'; }}
+                                    onBlur={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'rgba(168,85,247,0.25)'; }}
                                 />
-                                {errors.name && <p style={{ fontSize: '0.75rem', color: '#EF4444', marginTop: 4 }}>{errors.name}</p>}
+                                {errors.name && <p style={{ fontSize: '0.75rem', color: '#F43F5E', marginTop: 4 }}>{errors.name}</p>}
                             </div>
 
                             <div>
@@ -111,9 +111,9 @@ export default function Contact() {
                                 <input id="contact-email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="john@example.com"
                                     style={inputStyle(errors.email)}
                                     onFocus={(e) => { if (!errors.email) e.target.style.borderBottomColor = 'var(--accent)'; }}
-                                    onBlur={(e) => { if (!errors.email) e.target.style.borderBottomColor = 'rgba(255,255,255,0.15)'; }}
+                                    onBlur={(e) => { if (!errors.email) e.target.style.borderBottomColor = 'rgba(168,85,247,0.25)'; }}
                                 />
-                                {errors.email && <p style={{ fontSize: '0.75rem', color: '#EF4444', marginTop: 4 }}>{errors.email}</p>}
+                                {errors.email && <p style={{ fontSize: '0.75rem', color: '#F43F5E', marginTop: 4 }}>{errors.email}</p>}
                             </div>
 
                             <div>
@@ -123,9 +123,9 @@ export default function Contact() {
                                 <textarea id="contact-message" name="message" rows={5} value={form.message} onChange={handleChange} placeholder="Tell me about your project..."
                                     style={{ ...inputStyle(errors.message), resize: 'none' }}
                                     onFocus={(e) => { if (!errors.message) e.target.style.borderBottomColor = 'var(--accent)'; }}
-                                    onBlur={(e) => { if (!errors.message) e.target.style.borderBottomColor = 'rgba(255,255,255,0.15)'; }}
+                                    onBlur={(e) => { if (!errors.message) e.target.style.borderBottomColor = 'rgba(168,85,247,0.25)'; }}
                                 />
-                                {errors.message && <p style={{ fontSize: '0.75rem', color: '#EF4444', marginTop: 4 }}>{errors.message}</p>}
+                                {errors.message && <p style={{ fontSize: '0.75rem', color: '#F43F5E', marginTop: 4 }}>{errors.message}</p>}
                             </div>
 
                             <button type="submit" disabled={status === 'sending'} className="btn btn-primary"
@@ -148,7 +148,7 @@ export default function Contact() {
                             {contactInfo.map((info, i) => {
                                 const cardContent = (
                                     <>
-                                        <span style={{ fontSize: '1.5rem' }}>{info.icon}</span>
+                                        <span style={{ fontSize: '1.5rem', color: '#A855F7' }}>{info.icon}</span>
                                         <div>
                                             <p style={{ fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 2 }}>
                                                 {info.label}
@@ -162,7 +162,7 @@ export default function Contact() {
 
                                 const cardStyle = {
                                     display: 'flex', alignItems: 'center', gap: 16, padding: 20,
-                                    borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border)',
+                                    borderRadius: 16, background: 'rgba(11, 13, 25, 0.65)', border: '1px solid rgba(168, 85, 247, 0.2)',
                                     transition: 'all 0.3s ease', width: '100%',
                                 };
 
@@ -172,8 +172,8 @@ export default function Contact() {
                                         rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                                         className="reveal-stagger contact-info-card"
                                         style={cardStyle}
-                                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(168, 85, 247, 0.25)'; }}
+                                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.2)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
                                     >
                                         {cardContent}
                                     </a>

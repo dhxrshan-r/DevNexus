@@ -161,8 +161,8 @@ export default function Skills() {
                     max-width: 1100px;
                     margin: 0 auto;
                     min-height: auto;
-                    background: rgba(18, 24, 20, 0.6);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    background: rgba(11, 13, 25, 0.6);
+                    border: 1px solid rgba(168, 85, 247, 0.2);
                     padding: 24px;
                     border-radius: 32px;
                 }
@@ -193,7 +193,7 @@ export default function Skills() {
                 .skills-content-panel { padding-left: 8px; }
                 .content-header { display: flex; align-items: center; gap: 20px; margin-bottom: 32px; }
                 .cat-header-title { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin: 0; }
-                .cat-header-line { flex-grow: 1; height: 1px; background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent); }
+                .cat-header-line { flex-grow: 1; height: 1px; background: linear-gradient(to right, rgba(168, 85, 247, 0.3), transparent); }
 
                 .skills-grid-modern { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
                 .skill-item-modern {
@@ -208,10 +208,10 @@ export default function Skills() {
                     will-change: transform, opacity;
                 }
                 .skill-item-modern:hover {
-                    background: rgba(255, 255, 255, 0.05);
+                    background: rgba(168, 85, 247, 0.06);
                     border-color: var(--accent);
                     transform: translateX(10px);
-                    box-shadow: -10px 10px 40px -15px rgba(0,0,0,0.5);
+                    box-shadow: -10px 10px 40px -15px rgba(168, 85, 247, 0.3);
                 }
                 .skill-icon-wrap { font-size: 2rem; }
                 .skill-name-txt { font-weight: 700; color: var(--text-primary); margin: 0; font-size: 1.1rem; }
@@ -230,13 +230,13 @@ export default function Skills() {
                 }
                 .acc-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px; background: none; border: none; cursor: pointer; color: white; }
                 .trigger-left { display: flex; align-items: center; gap: 16px; }
-                .trigger-bar { width: 4px; height: 20px; background: #374151; border-radius: 2px; transition: all 0.3s ease; }
+                .trigger-bar { width: 4px; height: 20px; background: rgba(148, 163, 184, 0.4); border-radius: 2px; transition: all 0.3s ease; }
                 .modern-acc-item.open .trigger-bar { background: var(--accent); height: 24px; box-shadow: 0 0 10px var(--accent-glow); }
                 .acc-title { font-weight: 700; font-size: 1.1rem; }
                 .acc-chevron { 
                     width: 10px; height: 10px; 
-                    border-right: 2px solid #6b7280; 
-                    border-bottom: 2px solid #6b7280; 
+                    border-right: 2px solid rgba(148, 163, 184, 0.6); 
+                    border-bottom: 2px solid rgba(148, 163, 184, 0.6); 
                     transform: rotate(45deg); 
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                     margin-top: -4px;

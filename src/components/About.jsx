@@ -11,7 +11,7 @@ const stats = [
                 <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
             </svg>
         ),
-        color: '#818CF8',
+        color: '#A855F7',
     },
     {
         value: '4',
@@ -23,7 +23,7 @@ const stats = [
                 <path d="M2 12l10 5 10-5" />
             </svg>
         ),
-        color: '#38BDF8',
+        color: '#06B6D4',
     },
     {
         value: '3',
@@ -34,7 +34,7 @@ const stats = [
                 <path d="M9 12l2 2 4-4" />
             </svg>
         ),
-        color: '#34D399',
+        color: '#F43F5E',
     },
     {
         value: '2',
@@ -45,7 +45,7 @@ const stats = [
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
             </svg>
         ),
-        color: '#FB923C',
+        color: '#38BDF8',
     },
     {
         value: '5',
@@ -149,8 +149,8 @@ export default function About() {
                     margin: 0 auto 60px;
                     text-align: center;
                     padding: 36px 40px;
-                    background: rgba(18, 24, 20, 0.6);
-                    border: 1px solid var(--border);
+                    background: rgba(11, 13, 25, 0.6);
+                    border: 1px solid rgba(168, 85, 247, 0.2);
                     border-radius: 24px;
                     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
                 }
@@ -172,7 +172,7 @@ export default function About() {
                     text-align: center;
                     padding: 32px 18px 28px;
                     border-radius: 24px;
-                    background: rgba(18, 24, 20, 0.6);
+                    background: rgba(11, 13, 25, 0.6);
                     border: 1px solid rgba(255, 255, 255, 0.08);
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                     overflow: hidden;
