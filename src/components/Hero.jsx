@@ -251,10 +251,9 @@ export default function Hero() {
                     background-clip: text;
                 }
                 .name-text-accent {
-                    background: linear-gradient(135deg, #a855f7 20%, #06b6d4 70%, #f43f5e 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
+                    color: var(--accent);
+                    -webkit-text-fill-color: var(--accent);
+                    background: none;
                 }
 
                 /* CYBER TERMINAL ROLE ROTATOR */
