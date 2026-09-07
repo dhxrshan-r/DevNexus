@@ -23,9 +23,9 @@ const resumeItems = [
         type: 'education',
         icon: <FiBookOpen />,
         skills: [
-            { name: 'Generative AI & RAG Systems', level: 95 },
-            { name: 'SQL & Power BI ETL Pipelines', level: 92 },
-            { name: 'Machine Learning & ADAS Vision', level: 88 },
+            { name: 'Generative AI & RAG Systems' },
+            { name: 'SQL & Power BI ETL Pipelines' },
+            { name: 'Machine Learning & ADAS Vision' },
         ],
         bullets: [
             'Specialized in Generative AI RAG systems & Computer Vision ADAS prototypes',
@@ -46,9 +46,9 @@ const resumeItems = [
         type: 'internship',
         icon: <FiBriefcase />,
         skills: [
-            { name: 'Frontend Component Engineering', level: 90 },
-            { name: 'REST API & State Dispatch', level: 88 },
-            { name: 'Database Integration Queries', level: 85 },
+            { name: 'Frontend Component Engineering' },
+            { name: 'REST API & State Dispatch' },
+            { name: 'Database Integration Queries' },
         ],
         bullets: [
             'Built application components across frontend, backend, and database layers',
@@ -69,9 +69,9 @@ const resumeItems = [
         type: 'internship',
         icon: <FiBriefcase />,
         skills: [
-            { name: 'Sensor Assembly & Calibration', level: 92 },
-            { name: 'Signal Diagnostic Testing', level: 89 },
-            { name: 'Quality Assurance Standards', level: 86 },
+            { name: 'Sensor Assembly & Calibration' },
+            { name: 'Signal Diagnostic Testing' },
+            { name: 'Quality Assurance Standards' },
         ],
         bullets: [
             'Gained practical exposure to sensor manufacturing and hardware production processes',
@@ -92,9 +92,9 @@ const resumeItems = [
         type: 'certification',
         icon: <FiAward />,
         skills: [
-            { name: 'Anthropic Prompt Engineering', level: 96 },
-            { name: 'LLM Context Architecture', level: 94 },
-            { name: 'AI Safety & RAG Design', level: 91 },
+            { name: 'Anthropic Prompt Engineering' },
+            { name: 'LLM Context Architecture' },
+            { name: 'AI Safety & RAG Design' },
         ],
         bullets: [
             'Mastered LLM prompting frameworks, system instructions, and multi-turn context management',
@@ -114,9 +114,9 @@ const resumeItems = [
         type: 'certification',
         icon: <FiAward />,
         skills: [
-            { name: 'DAX Measures & Calculations', level: 94 },
-            { name: 'Power Query ETL Dataflow', level: 92 },
-            { name: 'Interactive Executive KPIs', level: 90 },
+            { name: 'DAX Measures & Calculations' },
+            { name: 'Power Query ETL Dataflow' },
+            { name: 'Interactive Executive KPIs' },
         ],
         bullets: [
             'Engineered complex DAX measures, automated Power Query ETL pipelines, and interactive dashboards',
@@ -136,9 +136,9 @@ const resumeItems = [
         type: 'certification',
         icon: <FiAward />,
         skills: [
-            { name: 'Full-Stack Architecture', level: 88 },
-            { name: 'Modern CSS & Glassmorphism', level: 90 },
-            { name: 'Relational DB Schemas', level: 85 },
+            { name: 'Full-Stack Architecture' },
+            { name: 'Modern CSS & Glassmorphism' },
+            { name: 'Relational DB Schemas' },
         ],
         bullets: [
             'Developed responsive Web Apps using HTML5, CSS3, JavaScript ES6+, and SQL databases',
@@ -326,27 +326,21 @@ export default function Resume() {
                                         {/* Description */}
                                         <p className="card-description">{item.description}</p>
 
-                                        {/* Competency Skill Progress Bars */}
+                                        {/* Competency Skill Badges */}
                                         {item.skills && item.skills.length > 0 && (
                                             <div className="card-section-block">
                                                 <h4 className="card-section-title">SKILL COMPETENCIES</h4>
-                                                <div className="card-meters-grid">
+                                                <div className="card-competencies-grid">
                                                     {item.skills.map((s, idx) => (
-                                                        <div key={idx} className="card-meter-item">
-                                                            <div className="meter-info">
-                                                                <span className="meter-label">{s.name}</span>
-                                                                <span className="meter-pct" style={{ color: config.color }}>{s.level}%</span>
-                                                            </div>
-                                                            <div className="meter-track">
-                                                                <div
-                                                                    className="meter-fill"
-                                                                    style={{
-                                                                        width: `${s.level}%`,
-                                                                        background: `linear-gradient(90deg, ${config.color}, #34d399)`,
-                                                                        boxShadow: `0 0 10px ${config.color}`
-                                                                    }}
-                                                                />
-                                                            </div>
+                                                        <div key={idx} className="competency-card">
+                                                            <span 
+                                                                className="competency-dot" 
+                                                                style={{ 
+                                                                    background: config.color,
+                                                                    boxShadow: `0 0 8px ${config.color}` 
+                                                                }} 
+                                                            />
+                                                            <span className="competency-name">{s.name}</span>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -679,51 +673,41 @@ export default function Resume() {
                     margin-bottom: 12px;
                 }
 
-                /* Meters */
-                .card-meters-grid {
+                /* Competencies Grid */
+                .card-competencies-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                    gap: 14px;
+                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 12px;
                 }
 
-                .card-meter-item {
+                .competency-card {
                     display: flex;
-                    flex-direction: column;
-                    gap: 6px;
-                    background: rgba(255, 255, 255, 0.02);
-                    padding: 12px 16px;
+                    align-items: center;
+                    gap: 12px;
+                    background: rgba(255, 255, 255, 0.025);
+                    padding: 12px 18px;
                     border-radius: 14px;
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.06);
+                    transition: all 0.3s ease;
                 }
 
-                .meter-info {
-                    display: flex;
-                    justify-content: space-between;
-                    font-size: 0.825rem;
+                .competency-card:hover {
+                    background: rgba(255, 255, 255, 0.05);
+                    border-color: var(--card-border);
+                    transform: translateY(-2px);
+                }
+
+                .competency-dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    flex-shrink: 0;
+                }
+
+                .competency-name {
+                    font-size: 0.875rem;
                     font-weight: 600;
-                }
-
-                .meter-label {
                     color: var(--text-primary);
-                }
-
-                .meter-pct {
-                    font-family: 'Fira Code', monospace;
-                    font-weight: 700;
-                }
-
-                .meter-track {
-                    height: 6px;
-                    width: 100%;
-                    background: rgba(255, 255, 255, 0.06);
-                    border-radius: 4px;
-                    overflow: hidden;
-                }
-
-                .meter-fill {
-                    height: 100%;
-                    border-radius: 4px;
-                    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
                 }
 
                 /* Bullets */
