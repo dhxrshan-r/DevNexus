@@ -102,7 +102,7 @@ export default function Navbar() {
                     background: scrolled ? 'rgba(5, 6, 10, 0.92)' : 'transparent',
                     backdropFilter: scrolled ? 'blur(12px)' : 'none',
                     WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-                    boxShadow: scrolled ? '0 4px 30px rgba(168, 85, 247, 0.15)' : 'none',
+                    boxShadow: scrolled ? '0 4px 30px rgba(16, 185, 129, 0.15)' : 'none',
                     transition: 'all 0.5s ease',
                 }}
                 role="navigation"

@@ -11,7 +11,7 @@ const stats = [
                 <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
             </svg>
         ),
-        color: '#A855F7',
+        color: '#10B981',
     },
     {
         value: '4',
@@ -23,7 +23,7 @@ const stats = [
                 <path d="M2 12l10 5 10-5" />
             </svg>
         ),
-        color: '#06B6D4',
+        color: '#34D399',
     },
     {
         value: '3',
@@ -34,7 +34,7 @@ const stats = [
                 <path d="M9 12l2 2 4-4" />
             </svg>
         ),
-        color: '#F43F5E',
+        color: '#4ADE80',
     },
     {
         value: '2',
@@ -45,7 +45,7 @@ const stats = [
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
             </svg>
         ),
-        color: '#38BDF8',
+        color: '#2DD4BF',
     },
     {
         value: '5',
@@ -56,7 +56,7 @@ const stats = [
                 <path d="M6 4H4a2 2 0 0 0-2 2v1a4 4 0 0 0 4 4M18 4h2a2 2 0 0 1 2 2v1a4 4 0 0 1-4 4" />
             </svg>
         ),
-        color: '#F59E0B',
+        color: '#A3E635',
     },
 ];
 
@@ -150,7 +150,7 @@ export default function About() {
                     text-align: center;
                     padding: 36px 40px;
                     background: rgba(11, 13, 25, 0.6);
-                    border: 1px solid rgba(168, 85, 247, 0.2);
+                    border: 1px solid rgba(16, 185, 129, 0.2);
                     border-radius: 24px;
                     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
                 }

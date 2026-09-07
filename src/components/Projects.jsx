@@ -202,10 +202,10 @@ export default function Projects() {
                     color: var(--text-primary);
                 }
                 .filter-tab-btn.active {
-                    background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+                    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
                     color: #ffffff;
                     font-weight: 700;
-                    box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+                    box-shadow: 0 0 20px rgba(16, 185, 129, 0.45);
                 }
 
                 /* Grid Layout */
@@ -220,7 +220,7 @@ export default function Projects() {
                 /* Card Design */
                 .projects-card-redesign {
                     background: rgba(11, 13, 25, 0.6);
-                    border: 1px solid rgba(168, 85, 247, 0.2);
+                    border: 1px solid rgba(16, 185, 129, 0.2);
                     border-radius: 28px;
                     overflow: hidden;
                     display: flex;
@@ -262,7 +262,7 @@ export default function Projects() {
                     padding: 6px 14px;
                     border-radius: 9999px;
                     background: rgba(11, 13, 25, 0.85);
-                    border: 1px solid rgba(168, 85, 247, 0.3);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
                     color: var(--accent);
                     font-size: 0.6875rem;
                     font-weight: 700;
@@ -275,7 +275,7 @@ export default function Projects() {
                     right: 16px;
                     padding: 6px 14px;
                     border-radius: 9999px;
-                    background: linear-gradient(135deg, #a855f7, #06b6d4);
+                    background: linear-gradient(135deg, #10b981, #34d399);
                     color: #ffffff;
                     font-size: 0.6875rem;
                     font-weight: 800;
@@ -369,9 +369,9 @@ export default function Projects() {
                     margin-top: 72px;
                     padding: 40px;
                     border-radius: 32px;
-                    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
-                    border: 1px solid rgba(168, 85, 247, 0.35);
-                    box-shadow: 0 10px 40px -15px rgba(168, 85, 247, 0.2);
+                    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(52, 211, 153, 0.1) 100%);
+                    border: 1px solid rgba(16, 185, 129, 0.35);
+                    box-shadow: 0 10px 40px -15px rgba(16, 185, 129, 0.2);
                     display: flex;
                     align-items: center;
                     justify-content: space-between;

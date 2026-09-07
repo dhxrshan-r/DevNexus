@@ -168,8 +168,8 @@ export default function Hero() {
                     padding: 8px 18px;
                     border-radius: 9999px;
                     background: rgba(11, 13, 25, 0.85);
-                    border: 1px solid rgba(168, 85, 247, 0.3);
-                    box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
                     margin-bottom: 24px;
                     opacity: 0;
                     transform: translateY(20px);
@@ -184,7 +184,7 @@ export default function Hero() {
                     font-size: 0.725rem;
                     font-weight: 700;
                     letter-spacing: 0.08em;
-                    color: #06b6d4;
+                    color: #34d399;
                 }
 
                 .hero-aurora-bg {
@@ -193,13 +193,13 @@ export default function Hero() {
                     pointer-events: none;
                     z-index: 1;
                     background: 
-                        radial-gradient(ellipse 700px 450px at 50% 25%, rgba(168, 85, 247, 0.16), transparent 70%),
-                        radial-gradient(ellipse 550px 380px at 85% 65%, rgba(6, 182, 212, 0.12), transparent 70%);
+                        radial-gradient(ellipse 700px 450px at 50% 25%, rgba(16, 185, 129, 0.16), transparent 70%),
+                        radial-gradient(ellipse 550px 380px at 85% 65%, rgba(52, 211, 153, 0.12), transparent 70%);
                 }
                 .hero-grid-pattern {
                     position: absolute;
                     inset: 0;
-                    background-image: radial-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px);
+                    background-image: radial-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px);
                     background-size: 32px 32px;
                     -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 40%, #000 30%, transparent 85%);
                     mask-image: radial-gradient(ellipse 80% 75% at 50% 40%, #000 30%, transparent 85%);
@@ -276,8 +276,8 @@ export default function Hero() {
                     padding: 10px 24px;
                     border-radius: 12px;
                     background: rgba(11, 13, 25, 0.85);
-                    border: 1px solid rgba(168, 85, 247, 0.25);
-                    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(168, 85, 247, 0.3);
+                    border: 1px solid rgba(16, 185, 129, 0.25);
+                    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(16, 185, 129, 0.3);
                     font-family: 'Fira Code', 'Courier New', monospace;
                     font-size: clamp(0.75rem, 2.4vw, 1.05rem);
                     max-width: 100%;
@@ -289,12 +289,12 @@ export default function Hero() {
                     white-space: nowrap;
                 }
                 .terminal-command {
-                    color: #06b6d4;
+                    color: #34d399;
                     margin-right: 8px;
                     white-space: nowrap;
                 }
                 .terminal-role {
-                    color: #a855f7;
+                    color: #10b981;
                     font-weight: 700;
                     transition: opacity 0.3s ease, transform 0.3s ease;
                     display: inline-block;
@@ -309,7 +309,7 @@ export default function Hero() {
                     transform: translateY(4px);
                 }
                 .terminal-cursor {
-                    color: #06b6d4;
+                    color: #34d399;
                     margin-left: 4px;
                     font-weight: 900;
                     animation: blink 1s step-start infinite;
@@ -317,10 +317,10 @@ export default function Hero() {
                 @keyframes blink { 50% { opacity: 0; } }
 
                 .glow-btn {
-                    box-shadow: 0 0 24px rgba(168, 85, 247, 0.35);
+                    box-shadow: 0 0 24px rgba(16, 185, 129, 0.35);
                 }
                 .glow-btn:hover {
-                    box-shadow: 0 0 35px rgba(6, 182, 212, 0.5);
+                    box-shadow: 0 0 35px rgba(52, 211, 153, 0.5);
                 }
 
                 .hero-social-divider {
@@ -358,7 +358,7 @@ export default function Hero() {
                     margin: 0 auto;
                     padding: 24px 32px;
                     background: rgba(11, 13, 25, 0.6);
-                    border: 1px solid rgba(168, 85, 247, 0.2);
+                    border: 1px solid rgba(16, 185, 129, 0.2);
                     border-radius: 24px;
                     backdrop-filter: blur(12px);
                 }
@@ -373,7 +373,7 @@ export default function Hero() {
                     font-weight: 800;
                     font-family: 'Outfit', sans-serif;
                     color: var(--text-primary);
-                    background: linear-gradient(135deg, #ffffff 20%, #a855f7 60%, #06b6d4 100%);
+                    background: linear-gradient(135deg, #ffffff 20%, #10b981 60%, #34d399 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
