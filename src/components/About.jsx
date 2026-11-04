@@ -26,7 +26,7 @@ const stats = [
         color: '#34D399',
     },
     {
-        value: '3',
+        value: '4',
         label: 'Certifications',
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -113,8 +113,8 @@ export default function About() {
                 {/* Text */}
                 <div ref={textRef} className="reveal about-desc-container">
                     <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9375rem, 2.5vw, 1.0625rem)', lineHeight: 1.8 }}>
-                        I'm <strong style={{ color: 'var(--text-primary)' }}>Dharshan</strong>, an ECE graduate from <strong style={{ color: 'var(--text-primary)' }}>RVS College of Engineering, Dindigul</strong> (CGPA: 7.93), passionate about bridging Data Science and Generative AI. 
-                        I specialize in <strong style={{ color: 'var(--text-primary)' }}>Python, SQL, Power BI, Machine Learning, and LLM RAG Systems</strong>. Driven by curiosity and technical rigor, I transform complex data into actionable insights and build end-to-end AI solutions.
+                        I'm <strong style={{ color: 'var(--text-primary)' }}>Dharshan</strong>, an Electronics and Communication Engineering graduate from <strong style={{ color: 'var(--text-primary)' }}>RVS College of Engineering, Dindigul</strong> (CGPA: 7.93), with hands-on skills in <strong style={{ color: 'var(--text-primary)' }}>Python, SQL, Generative AI, RAG, and Feature Engineering</strong>. 
+                        Skilled in <strong style={{ color: 'var(--text-primary)' }}>data analysis</strong> and developing <strong style={{ color: 'var(--text-primary)' }}>data-driven solutions</strong>, with a strong interest in applying Machine Learning and AI techniques to real-world problems.
                     </p>
                 </div>
 

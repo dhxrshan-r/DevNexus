@@ -5,9 +5,9 @@ import {
     SiHuggingface,
     SiScikitlearn,
     SiPytorch,
-    SiSpacy,
-    SiPostgresql,
+    SiTensorflow,
     SiPandas,
+    SiNumpy,
     SiPlotly,
     SiPython,
     SiJavascript,
@@ -18,10 +18,12 @@ import {
     SiC,
     SiArduino,
     SiOpencv,
+    SiJupyter,
 } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa6';
 
-const PowerBiLogo = ({ size = 36 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+const powerBiIcon = (
+    <svg width={36} height={36} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="3" y="11" width="4.5" height="10" rx="1" fill="#F2C811"/>
         <rect x="9.75" y="6.5" width="4.5" height="14.5" rx="1" fill="#F2C811"/>
         <rect x="16.5" y="2.5" width="4.5" height="18.5" rx="1" fill="#F2C811"/>
@@ -45,55 +47,76 @@ export const skillCategories = [
                 icon: <SiAnthropic size={36} color="#D97757" />
             },
             { 
-                name: "Fine-Tuning", 
+                name: "Fine-Tuning LLM", 
                 icon: <SiHuggingface size={36} color="#FFD21E" />
             }
         ]
     },
     {
-        title: "AI, ML & NLP",
+        title: "Libraries & ML / DL",
         skills: [
             { 
-                name: "Machine Learning", 
-                icon: <SiScikitlearn size={36} color="#F7931E" />
+                name: "TensorFlow", 
+                icon: <SiTensorflow size={36} color="#FF6F00" />
             },
             { 
-                name: "Deep Learning", 
+                name: "Transformers", 
+                icon: <SiHuggingface size={36} color="#FFD21E" />
+            },
+            { 
+                name: "LangChain", 
+                icon: <SiLangchain size={36} color="#34D399" />
+            },
+            { 
+                name: "Pandas & NumPy", 
+                icon: (
+                    <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                        <SiPandas size={28} color="#E70488" />
+                        <SiNumpy size={28} color="#4DABCF" />
+                    </div>
+                )
+            },
+            { 
+                name: "Matplotlib & Seaborn", 
+                icon: <SiPlotly size={36} color="#3F4F75" />
+            },
+            { 
+                name: "ML & Deep Learning", 
                 icon: <SiPytorch size={36} color="#EE4C2C" />
-            },
-            { 
-                name: "NLP & VADER", 
-                icon: <SiSpacy size={36} color="#09A3D5" />
             }
         ]
     },
     {
-        title: "Data Analytics & Query",
+        title: "Data Analysis & Query",
         skills: [
             { 
-                name: "SQL & Query Languages", 
-                icon: <SiPostgresql size={36} color="#4169E1" />
+                name: "SQL", 
+                icon: <SiMysql size={36} color="#4479A1" />
             },
             { 
-                name: "Power Query & ETL", 
-                icon: <PowerBiLogo size={36} />
-            },
-            { 
-                name: "Data Wrangling", 
-                icon: <SiPandas size={36} color="#E70488" />
+                name: "Power Query", 
+                icon: powerBiIcon
             },
             { 
                 name: "Data Visualization & EDA", 
-                icon: <SiPlotly size={36} color="#3F4F75" />
+                icon: <SiPlotly size={36} color="#10B981" />
+            },
+            { 
+                name: "Power BI", 
+                icon: powerBiIcon
             }
         ]
     },
     {
-        title: "Programming & Tools",
+        title: "Programming Languages",
         skills: [
             { 
                 name: "Python", 
                 icon: <SiPython size={36} color="#3776AB" />
+            },
+            { 
+                name: "Java (Basic)", 
+                icon: <FaJava size={36} color="#F89820" />
             },
             { 
                 name: "JavaScript", 
@@ -107,23 +130,11 @@ export const skillCategories = [
                         <SiCss size={30} color="#1572B6" />
                     </div>
                 )
-            },
-            { 
-                name: "Power BI", 
-                icon: <PowerBiLogo size={36} />
-            },
-            { 
-                name: "MySQL", 
-                icon: <SiMysql size={36} color="#4479A1" />
-            },
-            { 
-                name: "GitHub", 
-                icon: <SiGithub size={36} color="#FFFFFF" />
             }
         ]
     },
     {
-        title: "Core ADAS & Embedded",
+        title: "Core Skills: ADAS & Embedded",
         skills: [
             { 
                 name: "Embedded C", 
@@ -138,14 +149,36 @@ export const skillCategories = [
                 icon: <SiOpencv size={36} color="#5C3EE8" />
             }
         ]
+    },
+    {
+        title: "Tools & Software",
+        skills: [
+            { 
+                name: "Jupyter Notebook", 
+                icon: <SiJupyter size={36} color="#F37626" />
+            },
+            { 
+                name: "MySQL Workbench", 
+                icon: <SiMysql size={36} color="#4479A1" />
+            },
+            { 
+                name: "Power BI", 
+                icon: powerBiIcon
+            },
+            { 
+                name: "GitHub", 
+                icon: <SiGithub size={36} color="#FFFFFF" />
+            }
+        ]
     }
 ];
 
 export const coreSkills = [
-    "Generative AI: LLMs, RAG, Prompt Engineering & Fine-Tuning",
-    "Data Analysis: SQL Data Wrangling & Power BI Dashboarding",
-    "Computer Vision & Embedded: ADAS Designing, OpenCV & Sensor Interfacing",
-    "Machine Learning, Deep Learning & NLP Sentiment Analysis"
+    "Generative AI & LLMs: ML, DL, NLP, LLMs, RAG, Prompt Engineering & Fine-Tuning LLM",
+    "Data Analysis & Query: SQL, Power Query, Data Visualization & Exploratory Data Analysis",
+    "Libraries: Pandas, NumPy, Matplotlib, Seaborn, TensorFlow, Transformers & Langchain",
+    "Core Skills: Embedded C, Sensor Interfacing & ADAS Designing",
+    "Programming & Tools: Python, Java (Basic), Web Technologies, Jupyter Notebook & MySQL Workbench"
 ];
 
 export const skills = [];

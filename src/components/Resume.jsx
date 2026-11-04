@@ -16,32 +16,32 @@ const resumeItems = [
     {
         id: 'edu-be',
         year: '2022 - 2026',
-        title: 'B.E Electronics & Communication Engineering',
+        title: 'B.E Electronics and Communication Engineering',
         org: 'RVS College of Engineering, Dindigul',
         subtitle: 'CGPA : 7.93',
-        description: 'Graduated in Electronics and Communication Engineering with hands-on skills in Python, SQL, Power BI, Data Visualization, ML & DL, LLMs, RAG, and Fine-Tuning. Strong foundation in data analysis and Generative AI.',
+        description: 'Electronics and Communication Engineering graduate with hands-on skills in Python, SQL, Generative AI, RAG, and Feature Engineering. Skilled in data analysis and developing data-driven solutions, with a strong interest in applying ML and AI techniques to real-world problems.',
         type: 'education',
         icon: <FiBookOpen />,
         skills: [
-            { name: 'Generative AI & RAG Systems' },
-            { name: 'SQL & Power BI ETL Pipelines' },
+            { name: 'Generative AI, RAG & LLMs' },
+            { name: 'SQL, Power Query & ETL' },
             { name: 'Machine Learning & ADAS Vision' },
         ],
         bullets: [
-            'Specialized in Generative AI RAG systems & Computer Vision ADAS prototypes',
-            'Advanced coursework in Signal Processing, Embedded C, SQL Data Warehousing & Power BI ETL',
+            'Hands-on specialization in Generative AI, RAG pipelines, Prompt Engineering & Feature Engineering',
+            'Coursework in Signal Processing, Embedded C, Sensor Interfacing, SQL & Power BI analytics',
             'Graduated with 7.93 CGPA & active technical symposium leadership'
         ],
-        tags: ['Python', 'SQL', 'Power BI', 'Machine Learning', 'RAG LLMs', 'Embedded C'],
+        tags: ['Python', 'SQL', 'Generative AI', 'RAG', 'Feature Engineering', 'Embedded C'],
         badgeText: '🎓 B.E DEGREE',
         hash: '0x7F93_ECE'
     },
     {
         id: 'intern-codealpha',
         year: 'Jan 2026',
-        title: 'Full Stack Development Intern',
+        title: 'Full stack Development Intern',
         org: 'CodeAlpha — Virtual Internship',
-        subtitle: '1 Month Industrial Internship',
+        subtitle: 'Virtual Internship - 1 month',
         description: 'Built application components across frontend, backend, and database layers, applying full-stack development concepts to develop and integrate functional web features.',
         type: 'internship',
         icon: <FiBriefcase />,
@@ -55,7 +55,7 @@ const resumeItems = [
             'Applied full-stack development concepts to develop and integrate functional web features',
             'Collaborated on API endpoints, state management, and real-time frontend UI feedback'
         ],
-        tags: ['React', 'Node.js', 'REST APIs', 'Full Stack', 'Database Integration'],
+        tags: ['HTML', 'CSS', 'JavaScript', 'Full Stack', 'Database Integration'],
         badgeText: '💼 FULL-STACK INTERN',
         hash: '0xCA01_DEV'
     },
@@ -64,29 +64,52 @@ const resumeItems = [
         year: 'Aug 2025',
         title: 'Hardware Trainee Intern',
         org: 'Popular Systems — Summer Internship',
-        subtitle: '1 Month On-site Internship',
-        description: 'Gained practical exposure to sensor manufacturing and hardware production processes, including sensor assembly, testing, calibration, and quality inspection of sensor-based components.',
+        subtitle: 'Summer Internship - 1 month',
+        description: 'Gained practical exposure to sensor manufacturing and hardware production processes, including sensor assembly, testing, calibration, quality inspection of sensor-based components.',
         type: 'internship',
         icon: <FiBriefcase />,
         skills: [
             { name: 'Sensor Assembly & Calibration' },
             { name: 'Signal Diagnostic Testing' },
-            { name: 'Quality Assurance Standards' },
+            { name: 'Quality Inspection Standards' },
         ],
         bullets: [
             'Gained practical exposure to sensor manufacturing and hardware production processes',
-            'Performed sensor assembly, testing, calibration, and quality inspection of sensor-based components',
-            'Analyzed diagnostic signal outputs to ensure hardware reliability & standards compliance'
+            'Conducted sensor assembly, testing, calibration, and quality inspection of sensor-based components',
+            'Monitored diagnostic signals to ensure hardware reliability and standard compliance'
         ],
-        tags: ['Hardware Testing', 'Sensor Calibration', 'Embedded Systems', 'Quality Inspection'],
+        tags: ['Hardware Testing', 'Sensor Calibration', 'Embedded C', 'Quality Inspection'],
         badgeText: '💼 HARDWARE TRAINEE',
         hash: '0xPS08_HW'
     },
     {
+        id: 'cert-rvs-genai',
+        year: 'Apr - Sep 2026',
+        title: 'Specialization Course in Generative AI',
+        org: 'RVS CAS, in collaboration with Transform Tech',
+        subtitle: 'Specialization Certification',
+        description: 'Completed comprehensive specialization in Generative AI architectures, Large Language Models (LLMs), RAG systems, Prompt Engineering, and LLM Fine-Tuning.',
+        type: 'certification',
+        icon: <FiAward />,
+        skills: [
+            { name: 'Generative AI & LLM Fine-Tuning' },
+            { name: 'RAG Architecture & LangChain' },
+            { name: 'Prompt Engineering & NLP' },
+        ],
+        bullets: [
+            'Trained on LLM architectures, context management, prompt engineering, and fine-tuning techniques',
+            'Implemented Retrieval-Augmented Generation (RAG) solutions with vector stores and LangChain',
+            'Collaborative industrial curriculum delivered by RVS CAS and Transform Tech'
+        ],
+        tags: ['Generative AI', 'LLMs', 'RAG', 'Prompt Engineering', 'Fine-Tuning LLM', 'LangChain'],
+        badgeText: '📜 GEN AI SPECIALIZATION',
+        hash: '0xRVS_GENAI'
+    },
+    {
         id: 'cert-anthropic',
         year: 'March 2026',
-        title: 'AI Fluency: Framework & Foundations',
-        org: 'Certified by Anthropic',
+        title: 'AI Fluency : Framework & Foundations',
+        org: 'Certified by : Anthropic',
         subtitle: 'Official AI Certification',
         description: 'Certified by Anthropic in AI frameworks, foundation models, prompt engineering, and LLM implementation.',
         type: 'certification',
@@ -107,9 +130,9 @@ const resumeItems = [
     {
         id: 'cert-powerbi',
         year: 'Mar - Apr 2025',
-        title: 'Power BI Data Analytics Certification',
+        title: 'Power BI Data Analytics',
         org: 'Certified by LOGICPIES',
-        subtitle: 'Professional Analytics Certification',
+        subtitle: 'Certified by LOGICPIES',
         description: 'Certified by LOGICPIES in Power BI data visualization, Power Query ETL, data modeling, and business analytics.',
         type: 'certification',
         icon: <FiAward />,
@@ -129,15 +152,15 @@ const resumeItems = [
     {
         id: 'cert-alphafly',
         year: 'Nov - Dec 2024',
-        title: 'Full Stack Web Development',
-        org: 'Academy: AlphaFly',
-        subtitle: 'Web Development Certification',
+        title: 'Full Stack Development',
+        org: 'Academy : AlphaFly',
+        subtitle: 'Academy : AlphaFly',
         description: 'Certified in modern full-stack web development, frontend components, and backend database integration.',
         type: 'certification',
         icon: <FiAward />,
         skills: [
             { name: 'Full-Stack Architecture' },
-            { name: 'Modern CSS & Glassmorphism' },
+            { name: 'Modern CSS & UI Systems' },
             { name: 'Relational DB Schemas' },
         ],
         bullets: [
@@ -386,9 +409,142 @@ export default function Resume() {
                         );
                     })}
                 </div>
+                {/* Languages Proficiency Showcase */}
+                <div className="reveal resume-languages-banner hud-box">
+                    <div className="hud-corner-tl" />
+                    <div className="hud-corner-tr" />
+                    <div className="hud-corner-bl" />
+                    <div className="hud-corner-br" />
+                    <div className="languages-banner-header">
+                        <span className="lang-icon">🌐</span>
+                        <div>
+                            <h4 className="lang-title">Language Proficiency</h4>
+                            <p className="lang-sub">Multilingual Communication Capabilities</p>
+                        </div>
+                    </div>
+                    <div className="languages-grid">
+                        <div className="language-item">
+                            <div className="lang-top">
+                                <span className="lang-name">Tamil</span>
+                                <span className="lang-badge">LSWR • Fluent</span>
+                            </div>
+                            <span className="lang-detail">Listening, Speaking, Reading, Writing</span>
+                        </div>
+                        <div className="language-item">
+                            <div className="lang-top">
+                                <span className="lang-name">English</span>
+                                <span className="lang-badge">LSWR • Professional</span>
+                            </div>
+                            <span className="lang-detail">Listening, Speaking, Reading, Writing</span>
+                        </div>
+                        <div className="language-item">
+                            <div className="lang-top">
+                                <span className="lang-name">Telugu</span>
+                                <span className="lang-badge">Mother Tongue • LS</span>
+                            </div>
+                            <span className="lang-detail">Listening, Speaking</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <style>{`
+                .resume-languages-banner {
+                    max-width: 1050px;
+                    margin: 40px auto 0;
+                    padding: 24px 32px;
+                    background: rgba(11, 13, 25, 0.65);
+                    border: 1px solid rgba(16, 185, 129, 0.25);
+                    border-radius: 20px;
+                    position: relative;
+                }
+
+                .languages-banner-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    margin-bottom: 20px;
+                }
+
+                .lang-icon {
+                    font-size: 1.8rem;
+                }
+
+                .lang-title {
+                    font-size: 1.15rem;
+                    font-weight: 800;
+                    color: var(--text-primary);
+                    margin: 0 0 2px 0;
+                }
+
+                .lang-sub {
+                    font-size: 0.75rem;
+                    color: var(--text-secondary);
+                    margin: 0;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                }
+
+                .languages-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 16px;
+                }
+
+                .language-item {
+                    background: rgba(255, 255, 255, 0.025);
+                    border: 1px solid rgba(255, 255, 255, 0.07);
+                    border-radius: 14px;
+                    padding: 14px 18px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    transition: all 0.3s ease;
+                }
+
+                .language-item:hover {
+                    border-color: rgba(16, 185, 129, 0.4);
+                    background: rgba(16, 185, 129, 0.04);
+                    transform: translateY(-2px);
+                }
+
+                .lang-top {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                }
+
+                .lang-name {
+                    font-size: 0.95rem;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                }
+
+                .lang-badge {
+                    font-size: 0.6875rem;
+                    font-weight: 700;
+                    color: #10B981;
+                    background: rgba(16, 185, 129, 0.12);
+                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    padding: 2px 10px;
+                    border-radius: 9999px;
+                }
+
+                .lang-detail {
+                    font-size: 0.75rem;
+                    color: var(--text-secondary);
+                }
+
+                @media (max-width: 768px) {
+                    .languages-grid {
+                        grid-template-columns: 1fr;
+                        gap: 12px;
+                    }
+                    .resume-languages-banner {
+                        padding: 18px 16px;
+                    }
+                }
                 .resume-section {
                     padding: 110px 0;
                     background: transparent;

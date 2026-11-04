@@ -6,8 +6,9 @@ import { FaLinkedin } from 'react-icons/fa6';
 const roles = [
     "Generative AI & RAG Developer",
     "Data Analyst & Power BI Specialist",
+    "Feature Engineering & ML Practitioner",
     "Computer Vision & ADAS Developer",
-    "ECE Graduate"
+    "ECE Graduate (7.93 CGPA)"
 ];
 
 const metrics = [
@@ -108,7 +109,7 @@ export default function Hero() {
                             margin: 0,
                         }}
                     >
-                        Electronics & Communication Engineering Graduate specializing in <strong style={{ color: 'var(--text-primary)' }}>Generative AI & RAG</strong>, <strong style={{ color: 'var(--text-primary)' }}>Data Analytics & Power BI</strong>, and <strong style={{ color: 'var(--text-primary)' }}>Computer Vision</strong>.
+                        Electronics & Communication Engineering Graduate with hands-on skills in <strong style={{ color: 'var(--text-primary)' }}>Generative AI & RAG</strong>, <strong style={{ color: 'var(--text-primary)' }}>SQL & Power BI Analytics</strong>, and <strong style={{ color: 'var(--text-primary)' }}>Feature Engineering</strong>.
                     </p>
                 </div>
 
@@ -156,6 +157,26 @@ export default function Hero() {
                             <FaLinkedin />
                         </a>
                     </div>
+                </div>
+
+                {/* Hero Metrics Strip */}
+                <div
+                    className="hero-metrics-strip"
+                    style={{
+                        opacity: loaded ? 1 : 0,
+                        transform: loaded ? 'translateY(0)' : 'translateY(24px)',
+                        transition: 'all 0.7s ease 0.6s',
+                    }}
+                >
+                    {metrics.map((m, idx) => (
+                        <div key={idx} className="hero-metric-card">
+                            <span className="metric-val">{m.value}</span>
+                            <div className="metric-text-wrap">
+                                <span className="metric-label">{m.label}</span>
+                                <span className="metric-detail">{m.detail}</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
 

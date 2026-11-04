@@ -25,7 +25,7 @@ export default function Projects() {
             const children = gridRef.current.querySelectorAll('.reveal-stagger');
             children.forEach((child) => child.classList.add('revealed'));
         }
-    }, [activeCategory]);
+    }, [activeCategory, gridRef]);
 
     return (
         <section

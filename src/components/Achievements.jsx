@@ -109,7 +109,7 @@ export default function Achievements() {
             const children = gridRef.current.querySelectorAll('.reveal-stagger');
             children.forEach(child => child.classList.add('revealed'));
         }
-    }, [activeTab]);
+    }, [activeTab, gridRef]);
 
     return (
         <section

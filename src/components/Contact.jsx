@@ -3,10 +3,11 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { FiPhone, FiMail, FiLinkedin, FiGithub, FiMapPin } from 'react-icons/fi';
 
 const contactInfo = [
-    { icon: <FiMapPin />, label: 'Location', value: 'Theni, Tamil Nadu', href: 'Theni, Tamil Nadu' },
+    { icon: <FiPhone />, label: 'Phone', value: '+91 9360016416', href: 'tel:+919360016416' },
     { icon: <FiMail />, label: 'Email', value: 'dhxrshanr@gmail.com', href: 'mailto:dhxrshanr@gmail.com' },
-    { icon: <FiLinkedin />, label: 'LinkedIn', value: 'https://www.linkedin.com/in/dharshanr6/', href: 'https://www.linkedin.com/in/dharshanr6/' },
-    { icon: <FiGithub />, label: 'GitHub', value: 'https://github.com/dhxrshan-r', href: 'https://github.com/dhxrshan-r' },
+    { icon: <FiMapPin />, label: 'Location', value: 'Theni, Tamil Nadu', href: 'https://maps.google.com/?q=Theni,Tamil+Nadu' },
+    { icon: <FiLinkedin />, label: 'LinkedIn', value: 'linkedin.com/in/dharshanr6', href: 'https://www.linkedin.com/in/dharshanr6/' },
+    { icon: <FiGithub />, label: 'GitHub', value: 'github.com/dhxrshan-r', href: 'https://github.com/dhxrshan-r' },
 ];
 
 export default function Contact() {
