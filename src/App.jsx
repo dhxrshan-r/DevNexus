@@ -11,7 +11,10 @@ import Footer from './components/Footer';
 export default function App() {
   return (
     <>
-      <div className="bg-aurora"></div>
+      <div className="bg-spotlight" />
+      <div className="bg-aurora" />
+      <div className="bg-grid-pattern" />
+
       {/* Skip to content link for accessibility */}
       <a
         href="#about"
@@ -26,8 +29,8 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
-        <Resume />
         <Projects />
+        <Resume />
         <Achievements />
         <Contact />
       </main>
@@ -36,4 +39,3 @@ export default function App() {
     </>
   );
 }
-

@@ -175,24 +175,24 @@ const resumeItems = [
 
 const typeConfig = {
     education: { 
-        bg: 'rgba(16, 185, 129, 0.12)', 
-        color: '#10B981', 
-        border: 'rgba(16, 185, 129, 0.35)', 
-        glow: 'rgba(16, 185, 129, 0.25)',
+        bg: 'rgba(99, 102, 241, 0.12)', 
+        color: '#6366f1', 
+        border: 'rgba(99, 102, 241, 0.35)', 
+        glow: 'rgba(99, 102, 241, 0.25)',
         label: 'Education'
     },
     internship: { 
-        bg: 'rgba(52, 211, 153, 0.12)', 
-        color: '#34D399', 
-        border: 'rgba(52, 211, 153, 0.35)', 
-        glow: 'rgba(52, 211, 153, 0.25)',
+        bg: 'rgba(139, 92, 246, 0.12)', 
+        color: '#8b5cf6', 
+        border: 'rgba(139, 92, 246, 0.35)', 
+        glow: 'rgba(139, 92, 246, 0.25)',
         label: 'Internship'
     },
     certification: { 
-        bg: 'rgba(163, 230, 53, 0.12)', 
-        color: '#A3E635', 
-        border: 'rgba(163, 230, 53, 0.35)', 
-        glow: 'rgba(163, 230, 53, 0.25)',
+        bg: 'rgba(59, 130, 246, 0.12)', 
+        color: '#3b82f6', 
+        border: 'rgba(59, 130, 246, 0.35)', 
+        glow: 'rgba(59, 130, 246, 0.25)',
         label: 'Certification'
     },
 };
@@ -227,10 +227,13 @@ export default function Resume() {
             <div className="container">
                 {/* Header */}
                 <div ref={headerRef} className="reveal resume-header">
-                    <p className="section-label">Academic & Professional Credentials</p>
-                    <h2 className="section-title">Education, Internships & Certifications</h2>
+                    <div className="section-header-pill">
+                        <FiBookOpen />
+                        <span>Experience & Education</span>
+                    </div>
+                    <h2 className="section-title">Credentials & Track Record</h2>
                     <p className="resume-subtitle">
-                        Explore my academic foundation, industrial internship experiences, and verified AI & Analytics certifications.
+                        An integrated journey across academic excellence in ECE, hands-on industrial internships, and specialized AI & Analytics certifications.
                     </p>
 
                     <div style={{ marginTop: 24 }}>
@@ -288,7 +291,7 @@ export default function Resume() {
                         return (
                             <div
                                 key={item.id}
-                                className={`resume-showcase-card hud-box reveal-stagger ${isOpen ? 'is-open' : 'is-closed'}`}
+                                className={`resume-showcase-card reveal-stagger ${isOpen ? 'is-open' : 'is-closed'}`}
                                 style={{
                                     '--card-color': config.color,
                                     '--card-bg': config.bg,
@@ -296,8 +299,6 @@ export default function Resume() {
                                     '--card-glow': config.glow,
                                 }}
                             >
-                                <div className="hud-corner-tl" />
-                                <div className="hud-corner-tr" />
                                 <div className="card-top-bar" />
 
                                 {/* Interactive Card Header Row */}
@@ -410,11 +411,7 @@ export default function Resume() {
                     })}
                 </div>
                 {/* Languages Proficiency Showcase */}
-                <div className="reveal resume-languages-banner hud-box">
-                    <div className="hud-corner-tl" />
-                    <div className="hud-corner-tr" />
-                    <div className="hud-corner-bl" />
-                    <div className="hud-corner-br" />
+                <div className="reveal resume-languages-banner">
                     <div className="languages-banner-header">
                         <span className="lang-icon">🌐</span>
                         <div>
@@ -453,8 +450,8 @@ export default function Resume() {
                     max-width: 1050px;
                     margin: 40px auto 0;
                     padding: 24px 32px;
-                    background: rgba(11, 13, 25, 0.65);
-                    border: 1px solid rgba(16, 185, 129, 0.25);
+                    background: rgba(18, 18, 24, 0.75);
+                    border: 1px solid rgba(99, 102, 241, 0.25);
                     border-radius: 20px;
                     position: relative;
                 }
@@ -503,8 +500,8 @@ export default function Resume() {
                 }
 
                 .language-item:hover {
-                    border-color: rgba(16, 185, 129, 0.4);
-                    background: rgba(16, 185, 129, 0.04);
+                    border-color: rgba(99, 102, 241, 0.4);
+                    background: rgba(99, 102, 241, 0.05);
                     transform: translateY(-2px);
                 }
 
@@ -524,9 +521,9 @@ export default function Resume() {
                 .lang-badge {
                     font-size: 0.6875rem;
                     font-weight: 700;
-                    color: #10B981;
-                    background: rgba(16, 185, 129, 0.12);
-                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    color: #818cf8;
+                    background: rgba(99, 102, 241, 0.12);
+                    border: 1px solid rgba(99, 102, 241, 0.3);
                     padding: 2px 10px;
                     border-radius: 9999px;
                 }
@@ -581,8 +578,8 @@ export default function Resume() {
                     flex-wrap: wrap;
                     gap: 10px;
                     justify-content: center;
-                    background: rgba(11, 13, 25, 0.7);
-                    border: 1px solid rgba(16, 185, 129, 0.25);
+                    background: rgba(18, 18, 24, 0.7);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
                     padding: 8px 12px;
                     border-radius: 9999px;
                     box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.5);
@@ -609,10 +606,10 @@ export default function Resume() {
                 }
 
                 .resume-tab-btn.active {
-                    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+                    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #8b5cf6 100%);
                     color: #ffffff;
                     font-weight: 700;
-                    box-shadow: 0 0 20px rgba(16, 185, 129, 0.45);
+                    box-shadow: 0 0 20px rgba(99, 102, 241, 0.45);
                 }
 
                 .count-pill {
@@ -639,8 +636,8 @@ export default function Resume() {
                 }
 
                 .resume-showcase-card {
-                    background: rgba(11, 13, 25, 0.65);
-                    border: 1px solid var(--border);
+                    background: rgba(18, 18, 24, 0.75);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
                     border-radius: 24px;
                     padding: 28px 32px;
                     position: relative;

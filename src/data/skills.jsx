@@ -36,11 +36,11 @@ export const skillCategories = [
         skills: [
             { 
                 name: "Generative AI", 
-                icon: <SiOpenai size={36} color="#10A37F" />
+                icon: <SiOpenai size={36} color="#6366F1" />
             },
             { 
                 name: "LLMs & RAG", 
-                icon: <SiLangchain size={36} color="#34D399" />
+                icon: <SiLangchain size={36} color="#818CF8" />
             },
             { 
                 name: "Prompt Engineering", 
@@ -65,7 +65,7 @@ export const skillCategories = [
             },
             { 
                 name: "LangChain", 
-                icon: <SiLangchain size={36} color="#34D399" />
+                icon: <SiLangchain size={36} color="#818CF8" />
             },
             { 
                 name: "Pandas & NumPy", 
@@ -99,7 +99,7 @@ export const skillCategories = [
             },
             { 
                 name: "Data Visualization & EDA", 
-                icon: <SiPlotly size={36} color="#10B981" />
+                icon: <SiPlotly size={36} color="#06B6D4" />
             },
             { 
                 name: "Power BI", 

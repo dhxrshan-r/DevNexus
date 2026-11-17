@@ -24,8 +24,8 @@ const achievements = [
         year: 'Jan 2019',
         category: 'national',
         badge: '🎖️ National Selection',
-        color: '#10B981',
-        icon: <FaMedal className="award-icon" style={{ color: '#10B981' }} />,
+        color: '#6366f1',
+        icon: <FaMedal className="award-icon" style={{ color: '#6366f1' }} />,
         desc: 'Selected to represent NCC at the prestigious Republic Day Camp (RDC), participating in the March Past at the Red Fort, New Delhi. Represented national cadet corps with high military drill discipline, endurance & athletic leadership.',
         featured: true,
         bgImage: nccBgImage,
@@ -39,8 +39,8 @@ const achievements = [
         year: '2024',
         category: 'tech',
         badge: '🥉 3rd Prize Champion',
-        color: '#34D399',
-        icon: <SiOpencv className="award-icon" style={{ color: '#34D399' }} />,
+        color: '#8b5cf6',
+        icon: <SiOpencv className="award-icon" style={{ color: '#8b5cf6' }} />,
         desc: 'Awarded 3rd Prize for designing an Intelligent Driver Monitoring & Emergency Control System prototype featuring real-time eye aspect ratio tracking and automated emergency speed governor alerts.',
         featured: false,
         bgImage: adasBgImage,
@@ -54,8 +54,8 @@ const achievements = [
         year: '2024',
         category: 'tech',
         badge: '🥈 2nd Prize',
-        color: '#4ADE80',
-        icon: <SiResearchgate className="award-icon" style={{ color: '#4ADE80' }} />,
+        color: '#3b82f6',
+        icon: <SiResearchgate className="award-icon" style={{ color: '#3b82f6' }} />,
         desc: 'Presented technical research paper on advanced electronics & AI systems at the national level symposium, evaluating neural architecture efficiency and real-time processing.',
         featured: false,
         bgImage: paperBgImage,
@@ -69,8 +69,8 @@ const achievements = [
         year: '2020',
         category: 'sports',
         badge: '🏆 1st Prize Champion',
-        color: '#2DD4BF',
-        icon: <FaTrophy className="award-icon" style={{ color: '#2DD4BF' }} />,
+        color: '#06b6d4',
+        icon: <FaTrophy className="award-icon" style={{ color: '#06b6d4' }} />,
         desc: 'Won 1st Prize and overall team championship at the District Level Basketball Championship, showcasing high-tempo playmaking and tactical athletic endurance.',
         featured: false,
         bgImage: districtBasketballBgImage,
@@ -84,8 +84,8 @@ const achievements = [
         year: '2021',
         category: 'sports',
         badge: '🥈 2nd Prize',
-        color: '#A3E635',
-        icon: <FaBasketball className="award-icon" style={{ color: '#A3E635' }} />,
+        color: '#a855f7',
+        icon: <FaBasketball className="award-icon" style={{ color: '#a855f7' }} />,
         desc: 'Secured 2nd Prize representing the institution at the Zonal Basketball Championship, maintaining strategic defense under competitive pressure.',
         featured: false,
         bgImage: zonalBasketballBgImage,
@@ -120,10 +120,13 @@ export default function Achievements() {
             <div className="container">
                 {/* Header */}
                 <div ref={headerRef} className="reveal section-header">
-                    <p className="section-label">Honors & Competitions</p>
+                    <div className="section-header-pill">
+                        <FaTrophy />
+                        <span>Honors & Competitions</span>
+                    </div>
                     <h2 className="section-title">Achievements & Recognitions</h2>
                     <p className="section-subtitle">
-                        Key awards, national hackathon recognitions, sports honors, and national camp representations.
+                        Key awards, national hackathon recognitions, sports championships, and prestigious national parade selections.
                     </p>
 
                     {/* Category Filter Tabs */}
@@ -150,7 +153,7 @@ export default function Achievements() {
                             return (
                                 <div
                                     key={item.id}
-                                    className={`reveal-stagger revealed bento-card hud-box ${isFeatured ? 'bento-card-featured' : ''} ${hasBgImage ? 'has-bg-img' : ''}`}
+                                    className={`reveal-stagger revealed bento-card ${isFeatured ? 'bento-card-featured' : ''} ${hasBgImage ? 'has-bg-img' : ''}`}
                                     style={{
                                         '--card-accent': item.color,
                                         '--card-accent-bg': `${item.color}12`,
@@ -163,10 +166,6 @@ export default function Achievements() {
                                         } : {})
                                     }}
                                 >
-                                    <div className="hud-corner-tl" />
-                                    <div className="hud-corner-tr" />
-                                    <div className="hud-corner-bl" />
-                                    <div className="hud-corner-br" />
                                     {/* Top Holographic Accent Bar */}
                                     <div className="bento-top-bar" />
 
@@ -247,8 +246,8 @@ export default function Achievements() {
                     flex-wrap: wrap;
                     gap: 10px;
                     justify-content: center;
-                    background: rgba(11, 13, 25, 0.6);
-                    border: 1px solid var(--border);
+                    background: rgba(18, 18, 24, 0.7);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
                     padding: 6px;
                     border-radius: 9999px;
                 }
@@ -268,10 +267,10 @@ export default function Achievements() {
                     color: var(--text-primary);
                 }
                 .achievements-tab-btn.active {
-                    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+                    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #8b5cf6 100%);
                     color: #ffffff;
                     font-weight: 700;
-                    box-shadow: 0 0 20px rgba(16, 185, 129, 0.45);
+                    box-shadow: 0 0 20px rgba(99, 102, 241, 0.45);
                 }
 
                 /* Bento Grid Layout */
@@ -284,8 +283,8 @@ export default function Achievements() {
                 }
 
                 .bento-card {
-                    background: rgba(11, 13, 25, 0.6);
-                    border: 1px solid var(--border);
+                    background: rgba(18, 18, 24, 0.75);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
                     border-radius: 24px;
                     padding: 28px;
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -297,8 +296,8 @@ export default function Achievements() {
 
                 .bento-card-featured {
                     grid-column: span 2;
-                    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(52, 211, 153, 0.08) 100%);
-                    border-color: rgba(16, 185, 129, 0.35);
+                    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.08) 100%);
+                    border-color: rgba(99, 102, 241, 0.35);
                 }
 
                 .bento-card.has-bg-img {
@@ -356,13 +355,14 @@ export default function Achievements() {
                     gap: 5px;
                     font-size: 0.6875rem;
                     font-weight: 800;
-                    color: #10B981;
-                    background: rgba(16, 185, 129, 0.15);
-                    border: 1px solid rgba(16, 185, 129, 0.3);
+                    color: #ffffff;
+                    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+                    border: 1px solid rgba(99, 102, 241, 0.35);
                     padding: 4px 12px;
                     border-radius: 9999px;
                     letter-spacing: 0.05em;
                     backdrop-filter: blur(8px);
+                    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
                 }
                 .star-icon {
                     font-size: 0.7rem;

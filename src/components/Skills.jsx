@@ -1,348 +1,314 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { skillCategories, coreSkills } from '../data/skills';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { FiCode, FiCheckCircle } from 'react-icons/fi';
 
 export default function Skills() {
     const headerRef = useScrollReveal();
-    const coreSkillsRef = useScrollReveal({ staggerDelay: 80 });
+    const gridRef = useScrollReveal({ staggerDelay: 60 });
+    const [activeFilter, setActiveFilter] = useState('all');
 
-    const [activeTab, setActiveTab] = useState(skillCategories[0]?.title || '');
-    const [isMobile, setIsMobile] = useState(false);
-    const [openAccordions, setOpenAccordions] = useState([]);
-    const [showCoreSkills, setShowCoreSkills] = useState(false);
+    // Flatten all skills for 'all' tab with their category title
+    const allSkills = skillCategories.flatMap(cat => 
+        cat.skills.map(skill => ({ ...skill, category: cat.title }))
+    );
 
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 992);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
+    const filteredSkills = activeFilter === 'all'
+        ? allSkills
+        : allSkills.filter(s => s.category === activeFilter);
 
-    const toggleAccordion = (title) => {
-        setOpenAccordions(prev =>
-            prev.includes(title) ? prev.filter(t => t !== title) : [...prev, title]
-        );
-    };
-
-    const activeCategory = skillCategories.find(c => c.title === activeTab);
+    const categories = [
+        { id: 'all', label: 'All Technologies' },
+        ...skillCategories.map(c => ({ id: c.title, label: c.title }))
+    ];
 
     return (
-        <section id="skills" className="skills-section-new">
+        <section id="skills" className="skills-section">
             <div className="container">
-                {/* Header */}
-                <div ref={headerRef} className="reveal section-header">
-                    <p className="section-label-minimal">Expertise</p>
-                    <h2 className="section-title-bold">My Tech Stack</h2>
-                    <p className="section-desc">
-                        A curated selection of tools and technologies I use to bring ideas to life.
+                {/* Section Header */}
+                <div ref={headerRef} className="reveal skills-header">
+                    <div className="section-header-pill">
+                        <FiCode />
+                        <span>Technical Arsenal</span>
+                    </div>
+                    <h2 className="section-title">Skills & Technologies</h2>
+                    <p className="section-subtitle">
+                        A curated toolkit spanning Generative AI frameworks, machine learning libraries, SQL data pipelines, and embedded engineering.
                     </p>
-                </div>
 
-                {/* Main Skills Interaction Area */}
-                {!isMobile ? (
-                    <div className="skills-split-layout">
-                        {/* Left Sidebar */}
-                        <div className="skills-sidebar">
-                            <div className="sidebar-inner">
-                                {skillCategories.map((cat) => (
-                                    <button
-                                        key={cat.title}
-                                        className={`sidebar-item ${activeTab === cat.title ? 'active' : ''}`}
-                                        onClick={() => setActiveTab(cat.title)}
-                                    >
-                                        <div className="item-dot"></div>
-                                        <span className="item-text">{cat.title}</span>
-                                        <div className="active-glow"></div>
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Right Content */}
-                        <div className="skills-content-panel" key={activeTab}>
-                            <div className="content-header">
-                                <h3 className="cat-header-title">{activeTab}</h3>
-                                <div className="cat-header-line"></div>
-                            </div>
-                            <div className="skills-grid-modern">
-                                {activeCategory?.skills.map((skill, idx) => (
-                                    <div key={skill.name} className="skill-item-modern fade-up" style={{ animationDelay: `${idx * 0.05}s` }}>
-                                        <div className="skill-icon-wrap">
-                                            {skill.icon}
-                                        </div>
-                                        <div className="skill-info">
-                                            <h4 className="skill-name-txt">{skill.name}</h4>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                    {/* Filter Pills */}
+                    <div className="skills-filter-wrapper">
+                        <div className="skills-filter-bar">
+                            {categories.map((cat) => (
+                                <button
+                                    key={cat.id}
+                                    type="button"
+                                    className={`skills-filter-btn ${activeFilter === cat.id ? 'active' : ''}`}
+                                    onClick={() => setActiveFilter(cat.id)}
+                                >
+                                    {cat.label}
+                                </button>
+                            ))}
                         </div>
                     </div>
-                ) : (
-                    /* Mobile View: Premium Accordion */
-                    <div className="mobile-accordion-list">
-                        {skillCategories.map((category) => {
-                            const isOpen = openAccordions.includes(category.title);
+                </div>
+
+                {/* Skills Interactive Grid */}
+                <div ref={gridRef} className="reveal skills-cards-grid">
+                    {filteredSkills.map((skill, idx) => (
+                        <div key={`${skill.name}-${idx}`} className="skill-card">
+                            <div className="skill-card-inner">
+                                <div className="skill-icon-box">
+                                    {skill.icon}
+                                </div>
+                                <div className="skill-info">
+                                    <h4 className="skill-title">{skill.name}</h4>
+                                    <span className="skill-cat-label">{skill.category}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Core Focus Competencies Bento */}
+                <div className="skills-core-section">
+                    <div className="core-focus-header">
+                        <h3 className="core-focus-title">Primary Engineering Focus Areas</h3>
+                        <p className="core-focus-subtitle">Core competencies demonstrated across production projects, internships, and research papers.</p>
+                    </div>
+
+                    <div className="core-focus-grid">
+                        {coreSkills.map((skillText, idx) => {
+                            const [highlight, ...rest] = skillText.split(':');
                             return (
-                                <div key={category.title} className={`modern-acc-item ${isOpen ? 'open' : ''}`}>
-                                    <button
-                                        className="acc-trigger"
-                                        onClick={() => toggleAccordion(category.title)}
-                                    >
-                                        <div className="trigger-left">
-                                            <div className="trigger-bar"></div>
-                                            <span className="acc-title">{category.title}</span>
-                                        </div>
-                                        <span className="acc-chevron"></span>
-                                    </button>
-                                    <div className="acc-body">
-                                        <div className="acc-grid">
-                                            {category.skills.map((skill) => (
-                                                <div key={skill.name} className="acc-skill-card">
-                                                    <span className="acc-skill-icon">{skill.icon}</span>
-                                                    <span className="acc-skill-name">{skill.name}</span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                <div key={idx} className="core-focus-card">
+                                    <div className="core-check-icon">
+                                        <FiCheckCircle />
+                                    </div>
+                                    <div className="core-card-body">
+                                        <span className="core-highlight">{highlight}</span>
+                                        {rest.length > 0 && <span className="core-rest">: {rest.join(':')}</span>}
                                     </div>
                                 </div>
                             );
                         })}
                     </div>
-                )}
-
-                {/* Core Skills - Structured Grid */}
-                <div ref={coreSkillsRef} className="reveal core-skills-redesign">
-                    <div className="core-header-wrap">
-                        <div className="line"></div>
-                        <h2 className="title">Primary Focus Areas</h2>
-                        <div className="line"></div>
-                    </div>
-                    
-                    <div className={`core-grid-container ${showCoreSkills ? 'expanded' : ''}`}>
-                        <div className="core-grid">
-                            {coreSkills.map((skill, index) => (
-                                <div key={index} className="core-card">
-                                    <div className="card-check">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <span className="card-text">{skill}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="core-view-more">
-                        <button 
-                            className="btn-view-skills"
-                            onClick={() => setShowCoreSkills(!showCoreSkills)}
-                        >
-                            {showCoreSkills ? 'Hide' : 'View'}
-                            <span className={`arrow ${showCoreSkills ? 'up' : 'down'}`}></span>
-                        </button>
-                    </div>
                 </div>
             </div>
 
             <style>{`
-                .skills-section-new { padding: 120px 0; background: transparent; overflow: hidden; }
-                .section-header { text-align: center; margin-bottom: 80px; }
-                .section-label-minimal { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2rem; font-size: 0.75rem; margin-bottom: 12px; }
-                .section-title-bold { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: var(--text-primary); margin-bottom: 24px; }
-                .section-desc { color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.6; }
-
-                /* Split Layout Desktop */
-                .skills-split-layout {
-                    display: grid;
-                    grid-template-columns: 260px 1fr;
-                    gap: 32px;
-                    max-width: 1100px;
-                    margin: 0 auto;
-                    min-height: auto;
-                    background: rgba(11, 13, 25, 0.6);
-                    border: 1px solid rgba(16, 185, 129, 0.2);
-                    padding: 24px;
-                    border-radius: 32px;
+                .skills-section {
+                    padding: 120px 0 100px;
+                    position: relative;
                 }
 
-                .skills-sidebar { display: flex; flex-direction: column; gap: 8px; border-right: 1px solid rgba(255, 255, 255, 0.05); padding-right: 32px; }
-                .sidebar-item {
+                .skills-header {
+                    text-align: center;
+                    margin-bottom: 50px;
+                }
+
+                /* Filter Bar */
+                .skills-filter-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 36px;
+                }
+
+                .skills-filter-bar {
+                    display: inline-flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    justify-content: center;
+                    background: rgba(18, 18, 24, 0.7);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    padding: 6px;
+                    border-radius: 9999px;
+                    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+                }
+
+                .skills-filter-btn {
                     background: transparent;
                     border: none;
+                    color: var(--text-secondary);
+                    padding: 8px 18px;
+                    border-radius: 9999px;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.25s ease;
+                    white-space: nowrap;
+                }
+
+                .skills-filter-btn:hover {
+                    color: #ffffff;
+                }
+
+                .skills-filter-btn.active {
+                    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #8b5cf6 100%);
+                    color: #ffffff;
+                    font-weight: 700;
+                    box-shadow: 0 0 18px rgba(99, 102, 241, 0.4);
+                }
+
+                /* Grid Layout */
+                .skills-cards-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+                    gap: 16px;
+                    max-width: 1140px;
+                    margin: 0 auto 60px;
+                }
+
+                .skill-card {
+                    background: rgba(18, 18, 24, 0.7);
+                    border: 1px solid rgba(255, 255, 255, 0.07);
+                    border-radius: 18px;
+                    padding: 20px;
+                    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                    position: relative;
+                }
+
+                .skill-card:hover {
+                    border-color: rgba(99, 102, 241, 0.4);
+                    background: rgba(24, 24, 34, 0.85);
+                    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(99, 102, 241, 0.15);
+                    transform: translateY(-3px);
+                }
+
+                .skill-card-inner {
                     display: flex;
                     align-items: center;
                     gap: 16px;
-                    padding: 16px 20px;
-                    border-radius: 16px;
-                    color: var(--text-muted);
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    position: relative;
-                    text-align: left;
-                    overflow: hidden;
                 }
-                .item-dot { width: 6px; height: 6px; background: currentColor; border-radius: 50%; opacity: 0.3; transition: all 0.3s ease; }
-                .sidebar-item.active { color: white; background: rgba(255, 255, 255, 0.03); }
-                .sidebar-item.active .item-dot { background: var(--accent); opacity: 1; box-shadow: 0 0 10px var(--accent-glow); transform: scale(1.5); }
-                .active-glow { position: absolute; left: 0; top: 0; height: 100%; width: 3px; background: var(--accent); opacity: 0; transition: all 0.3s ease; }
-                .sidebar-item.active .active-glow { opacity: 1; box-shadow: 0 0 15px var(--accent-glow); }
 
-                .skills-content-panel { padding-left: 8px; }
-                .content-header { display: flex; align-items: center; gap: 20px; margin-bottom: 32px; }
-                .cat-header-title { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin: 0; }
-                .cat-header-line { flex-grow: 1; height: 1px; background: linear-gradient(to right, rgba(16, 185, 129, 0.3), transparent); }
-
-                .skills-grid-modern { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-                .skill-item-modern {
-                    background: rgba(255, 255, 255, 0.02);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                    padding: 24px;
-                    border-radius: 20px;
+                .skill-icon-box {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 14px;
+                    background: rgba(255, 255, 255, 0.035);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
                     display: flex;
                     align-items: center;
-                    gap: 20px;
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    will-change: transform, opacity;
-                }
-                .skill-item-modern:hover {
-                    background: rgba(16, 185, 129, 0.06);
-                    border-color: var(--accent);
-                    transform: translateX(10px);
-                    box-shadow: -10px 10px 40px -15px rgba(16, 185, 129, 0.3);
-                }
-                .skill-icon-wrap { font-size: 2rem; }
-                .skill-name-txt { font-weight: 700; color: var(--text-primary); margin: 0; font-size: 1.1rem; }
-
-                .fade-up { animation: fadeUp 0.5s ease backwards; }
-                @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-                /* Mobile Accordion */
-                .mobile-accordion-list { display: flex; flex-direction: column; gap: 12px; }
-                .modern-acc-item { 
-                    background: rgba(255, 255, 255, 0.02); 
-                    border: 1px solid rgba(255, 255, 255, 0.05); 
-                    border-radius: 20px; 
-                    overflow: hidden; 
-                    will-change: transform, opacity;
-                }
-                .acc-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px; background: none; border: none; cursor: pointer; color: white; }
-                .trigger-left { display: flex; align-items: center; gap: 16px; }
-                .trigger-bar { width: 4px; height: 20px; background: rgba(148, 163, 184, 0.4); border-radius: 2px; transition: all 0.3s ease; }
-                .modern-acc-item.open .trigger-bar { background: var(--accent); height: 24px; box-shadow: 0 0 10px var(--accent-glow); }
-                .acc-title { font-weight: 700; font-size: 1.1rem; }
-                .acc-chevron { 
-                    width: 10px; height: 10px; 
-                    border-right: 2px solid rgba(148, 163, 184, 0.6); 
-                    border-bottom: 2px solid rgba(148, 163, 184, 0.6); 
-                    transform: rotate(45deg); 
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    margin-top: -4px;
-                }
-                .modern-acc-item.open .acc-chevron { 
-                    transform: rotate(-135deg); 
-                    border-color: var(--accent);
-                    margin-top: 4px;
-                }
-                .acc-body { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; }
-                .modern-acc-item.open .acc-body { max-height: 1000px; padding: 0 20px 20px; opacity: 1; }
-                .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 120px), 1fr)); gap: 10px; }
-                .acc-skill-card { background: rgba(255, 255, 255, 0.03); padding: 14px 10px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
-                .acc-skill-icon { font-size: 2rem; display: flex; align-items: center; justify-content: center; }
-                .acc-skill-name { font-size: 0.725rem; font-weight: 700; color: var(--text-secondary); line-height: 1.3; }
-
-                /* Core Skills Section */
-                .core-skills-redesign { margin-top: 100px; max-width: 900px; margin-left: auto; margin-right: auto; }
-                .core-header-wrap { display: flex; align-items: center; gap: 24px; margin-bottom: 48px; }
-                .core-header-wrap .line { flex-grow: 1; height: 1px; background: linear-gradient(to right, transparent, var(--accent), transparent); opacity: 0.3; }
-                .core-header-wrap .title { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.2em; white-space: nowrap; }
-                .core-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-                .core-card { 
-                    display: flex; 
-                    align-items: center; 
-                    gap: 16px; 
-                    background: rgba(255, 255, 255, 0.02); 
-                    border: 1px solid rgba(255, 255, 255, 0.05); 
-                    padding: 24px; 
-                    border-radius: 20px; 
-                    transition: all 0.3s ease;
-                    will-change: transform, opacity;
-                }
-                .core-card:hover { background: rgba(255, 255, 255, 0.04); border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
-                .card-check { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
-                .card-text { font-size: 1rem; font-weight: 600; color: var(--text-secondary); }
-                .core-card:hover .card-text { color: var(--text-primary); }
-
-                /* Collapsible Logic */
-                .core-grid-container { 
-                    max-height: 0; 
-                    opacity: 0; 
-                    overflow: hidden; 
-                    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-                    margin-bottom: 0;
-                }
-                .core-grid-container.expanded { 
-                    max-height: 800px; 
-                    opacity: 1; 
-                    margin-bottom: 40px;
-                    padding-top: 20px;
-                }
-
-                .core-view-more { 
-                    display: flex; 
-                    justify-content: center; 
-                    margin-top: 24px; 
-                }
-                .btn-view-skills {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: var(--text-primary);
-                    padding: 12px 32px;
-                    border-radius: 99px;
-                    font-weight: 700;
-                    font-size: 0.85rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1rem;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    transition: all 0.3s ease;
-                }
-                .btn-view-skills:hover {
-                    background: var(--accent-faded);
-                    border-color: var(--accent);
-                    box-shadow: 0 0 20px var(--accent-faded);
-                    transform: translateY(-2px);
-                }
-                .arrow {
-                    width: 8px;
-                    height: 8px;
-                    border-right: 2px solid currentColor;
-                    border-bottom: 2px solid currentColor;
-                    transform: rotate(45deg);
-                    margin-top: -4px;
+                    justify-content: center;
+                    font-size: 1.75rem;
+                    flex-shrink: 0;
                     transition: transform 0.3s ease;
                 }
-                .arrow.up { transform: rotate(-135deg); margin-top: 4px; }
 
-                @media (max-width: 991px) {
-                    .skills-split-layout { display: none; }
+                .skill-card:hover .skill-icon-box {
+                    transform: scale(1.08);
                 }
+
+                .skill-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                    overflow: hidden;
+                }
+
+                .skill-title {
+                    font-size: 0.95rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    margin: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .skill-cat-label {
+                    font-size: 0.6875rem;
+                    color: var(--text-secondary);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                /* Core Focus Section */
+                .skills-core-section {
+                    max-width: 1140px;
+                    margin: 0 auto;
+                    padding: 36px 32px;
+                    background: rgba(18, 18, 24, 0.85);
+                    border: 1px solid rgba(99, 102, 241, 0.2);
+                    border-radius: 24px;
+                    box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.7);
+                }
+
+                .core-focus-header {
+                    text-align: center;
+                    margin-bottom: 28px;
+                }
+
+                .core-focus-title {
+                    font-size: 1.35rem;
+                    font-weight: 800;
+                    color: #ffffff;
+                    margin-bottom: 6px;
+                }
+
+                .core-focus-subtitle {
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
+                    margin: 0;
+                }
+
+                .core-focus-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                    gap: 14px;
+                }
+
+                .core-focus-card {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 14px;
+                    background: rgba(255, 255, 255, 0.025);
+                    border: 1px solid rgba(255, 255, 255, 0.06);
+                    border-radius: 16px;
+                    padding: 16px 20px;
+                    transition: all 0.3s ease;
+                }
+
+                .core-focus-card:hover {
+                    border-color: rgba(99, 102, 241, 0.35);
+                    background: rgba(99, 102, 241, 0.06);
+                    transform: translateY(-2px);
+                }
+
+                .core-check-icon {
+                    color: #6366f1;
+                    font-size: 1.15rem;
+                    margin-top: 2px;
+                    flex-shrink: 0;
+                }
+
+                .core-card-body {
+                    font-size: 0.85rem;
+                    line-height: 1.5;
+                }
+
+                .core-highlight {
+                    font-weight: 700;
+                    color: #ffffff;
+                }
+
+                .core-rest {
+                    color: var(--text-secondary);
+                }
+
                 @media (max-width: 768px) {
-                    .skills-section-new { padding: 60px 0 !important; }
-                    .section-header { margin-bottom: 40px !important; }
-                    .core-skills-redesign { margin-top: 60px !important; }
-                    .core-grid { grid-template-columns: 1fr; gap: 12px; }
-                    .core-header-wrap .title { font-size: clamp(0.95rem, 4vw, 1.25rem); letter-spacing: 0.1em; white-space: normal; text-align: center; }
-                    .core-header-wrap { gap: 12px; margin-bottom: 28px; }
-                    .acc-trigger { padding: 18px 16px; }
-                    .core-card { padding: 16px 14px; border-radius: 14px; }
+                    .skills-section { padding: 80px 0 60px !important; }
+                    .skills-filter-bar { border-radius: 20px; }
+                    .skills-filter-btn { padding: 6px 14px; font-size: 0.75rem; }
+                    .skills-cards-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+                    .skill-card { padding: 14px; }
+                    .skill-icon-box { width: 40px; height: 40px; font-size: 1.4rem; }
+                    .skill-title { font-size: 0.85rem; }
+                    .skills-core-section { padding: 24px 18px; }
+                    .core-focus-grid { grid-template-columns: 1fr; }
                 }
             `}</style>
         </section>
     );
 }
-

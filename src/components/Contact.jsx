@@ -66,7 +66,7 @@ export default function Contact() {
         fontSize: '1rem',
         outline: 'none',
         border: 'none',
-        borderBottom: `1px solid ${hasError ? '#F43F5E' : 'rgba(16,185,129,0.25)'}`,
+        borderBottom: `1px solid ${hasError ? '#F43F5E' : 'rgba(255, 255, 255, 0.12)'}`,
         fontFamily: 'inherit',
         transition: 'border-color 0.3s ease',
         minHeight: 44,
@@ -80,27 +80,30 @@ export default function Contact() {
         >
             <div className="container">
                 {/* Header */}
-                <div ref={headerRef} className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-                    <p className="section-label">Get in touch</p>
-                    <h2 className="section-title">Let's Work Together</h2>
-                    <p style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)', color: 'var(--text-secondary)', maxWidth: 480, margin: '0 auto' }}>
-                        Have a project in mind? Let's build something great.
+                <div ref={headerRef} className="reveal" style={{ textAlign: 'center', marginBottom: 54 }}>
+                    <div className="section-header-pill">
+                        <FiMail />
+                        <span>Get In Touch</span>
+                    </div>
+                    <h2 className="section-title">Let's Build Together</h2>
+                    <p style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', color: 'var(--text-secondary)', maxWidth: 540, margin: '0 auto', lineHeight: 1.7 }}>
+                        Have an opportunity, AI project, or analytics problem in mind? Let's connect and discuss how we can engineer an impactful solution.
                     </p>
                 </div>
 
                 {/* 2-col grid */}
                 <div className="contact-grid">
                     {/* Form */}
-                    <div ref={formRef} className="reveal">
-                        <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+                    <div ref={formRef} className="reveal contact-form-card">
+                        <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
                             <div>
                                 <label htmlFor="contact-name" style={{ display: 'block', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 8 }}>
                                     Name
                                 </label>
-                                <input id="contact-name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Name"
+                                <input id="contact-name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Your Full Name"
                                     style={inputStyle(errors.name)}
                                     onFocus={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'var(--accent)'; }}
-                                    onBlur={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'rgba(16,185,129,0.25)'; }}
+                                    onBlur={(e) => { if (!errors.name) e.target.style.borderBottomColor = 'rgba(255, 255, 255, 0.12)'; }}
                                 />
                                 {errors.name && <p style={{ fontSize: '0.75rem', color: '#F43F5E', marginTop: 4 }}>{errors.name}</p>}
                             </div>
@@ -109,10 +112,10 @@ export default function Contact() {
                                 <label htmlFor="contact-email" style={{ display: 'block', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 8 }}>
                                     Your Email
                                 </label>
-                                <input id="contact-email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="john@example.com"
+                                <input id="contact-email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="your.email@example.com"
                                     style={inputStyle(errors.email)}
                                     onFocus={(e) => { if (!errors.email) e.target.style.borderBottomColor = 'var(--accent)'; }}
-                                    onBlur={(e) => { if (!errors.email) e.target.style.borderBottomColor = 'rgba(16,185,129,0.25)'; }}
+                                    onBlur={(e) => { if (!errors.email) e.target.style.borderBottomColor = 'rgba(255, 255, 255, 0.12)'; }}
                                 />
                                 {errors.email && <p style={{ fontSize: '0.75rem', color: '#F43F5E', marginTop: 4 }}>{errors.email}</p>}
                             </div>
@@ -121,10 +124,10 @@ export default function Contact() {
                                 <label htmlFor="contact-message" style={{ display: 'block', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 8 }}>
                                     Your Message
                                 </label>
-                                <textarea id="contact-message" name="message" rows={5} value={form.message} onChange={handleChange} placeholder="Tell me about your project..."
+                                <textarea id="contact-message" name="message" rows={4} value={form.message} onChange={handleChange} placeholder="Tell me about your project, ideas, or opportunity..."
                                     style={{ ...inputStyle(errors.message), resize: 'none' }}
                                     onFocus={(e) => { if (!errors.message) e.target.style.borderBottomColor = 'var(--accent)'; }}
-                                    onBlur={(e) => { if (!errors.message) e.target.style.borderBottomColor = 'rgba(16,185,129,0.25)'; }}
+                                    onBlur={(e) => { if (!errors.message) e.target.style.borderBottomColor = 'rgba(255, 255, 255, 0.12)'; }}
                                 />
                                 {errors.message && <p style={{ fontSize: '0.75rem', color: '#F43F5E', marginTop: 4 }}>{errors.message}</p>}
                             </div>
@@ -133,13 +136,13 @@ export default function Contact() {
                                 style={{ width: '100%', marginTop: 12, opacity: status === 'sending' ? 0.6 : 1 }}
                             >
                                 {status === 'sending' && <span style={{ width: 16, height: 16, border: '2px solid currentColor', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 1s linear infinite', display: 'inline-block' }} />}
-                                {status === 'idle' && 'Send Message'}
-                                {status === 'sending' && 'Sending...'}
-                                {status === 'sent' && '✓ Message Sent!'}
+                                {status === 'idle' && 'Send Message →'}
+                                {status === 'sending' && 'Sending Message...'}
+                                {status === 'sent' && '✓ Message Sent Successfully!'}
                                 {status === 'error' && 'Try Again'}
                             </button>
 
-                            {status === 'sent' && <p style={{ fontSize: '0.875rem', color: 'var(--success)' }}>Thank you! I'll get back to you soon.</p>}
+                            {status === 'sent' && <p style={{ fontSize: '0.875rem', color: 'var(--success)' }}>Thank you for reaching out! I will respond promptly.</p>}
                         </form>
                     </div>
 
@@ -149,7 +152,7 @@ export default function Contact() {
                             {contactInfo.map((info, i) => {
                                 const cardContent = (
                                     <>
-                                        <span style={{ fontSize: '1.5rem', color: '#10B981' }}>{info.icon}</span>
+                                        <span style={{ fontSize: '1.5rem', color: 'var(--accent-light)' }}>{info.icon}</span>
                                         <div>
                                             <p style={{ fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 2 }}>
                                                 {info.label}
@@ -163,7 +166,7 @@ export default function Contact() {
 
                                 const cardStyle = {
                                     display: 'flex', alignItems: 'center', gap: 16, padding: 20,
-                                    borderRadius: 16, background: 'rgba(11, 13, 25, 0.65)', border: '1px solid rgba(16, 185, 129, 0.2)',
+                                    borderRadius: 16, background: 'rgba(18, 18, 24, 0.75)', border: '1px solid rgba(255, 255, 255, 0.08)',
                                     transition: 'all 0.3s ease', width: '100%',
                                 };
 
@@ -173,8 +176,8 @@ export default function Contact() {
                                         rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                                         className="reveal-stagger contact-info-card"
                                         style={cardStyle}
-                                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(16, 185, 129, 0.25)'; }}
-                                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.2)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 0 20px var(--accent-glow)'; }}
+                                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
                                     >
                                         {cardContent}
                                     </a>
@@ -197,12 +200,26 @@ export default function Contact() {
                     max-width: 1100px;
                     margin: 0 auto;
                 }
+                .contact-form-card {
+                    background: rgba(18, 18, 24, 0.75);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    border-radius: 24px;
+                    padding: 36px 32px;
+                    backdrop-filter: blur(16px);
+                    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+                    transition: all 0.35s ease;
+                }
+                .contact-form-card:hover {
+                    border-color: rgba(99, 102, 241, 0.35);
+                    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(99, 102, 241, 0.15);
+                }
                 @media (max-width: 767px) {
                     .contact-section { padding-top: 60px !important; padding-bottom: 60px !important; }
                     .contact-grid {
                         grid-template-columns: 1fr !important;
                         gap: 40px !important;
                     }
+                    .contact-form-card { padding: 24px 20px !important; }
                     .contact-info-card { padding: 16px !important; }
                 }
             `}</style>
